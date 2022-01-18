@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="libft" targetName="libft" />
+      <config projectName="libft" targetName="ft_substr" />
+      <config projectName="libft" targetName="libft.h" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Default" GENERATION_OPTIONS="-Werror=dev" />
+      <configuration PROFILE_NAME="Release" ENABLED="true" CONFIG_NAME="Release" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="686c6380-28e4-43b2-8b02-81fe36be1175" name="Changes" comment="Traduction de la doc du français en anglais">
+      <change afterPath="$PROJECT_DIR$/.idea/libft.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ft_strlen.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/libft.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ft_lstnew.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ft_lstadd_back.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ft_lstadd_front.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ft_lstsize.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ft_lstlast.c" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="20P9iqXxw1L7iRnNinAFKdm0D9L" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
+  </component>
+  <component name="RunManager">
+    <configuration name="libft.h" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="libft" TARGET_NAME="libft.h" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="libft" RUN_TARGET_NAME="libft.h">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="686c6380-28e4-43b2-8b02-81fe36be1175" name="Changes" comment="" />
+      <created>1635935489666</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635935489666</updated>
+      <workItem from="1635935493650" duration="20273000" />
+      <workItem from="1636025026369" duration="4206000" />
+      <workItem from="1636033408401" duration="10182000" />
+      <workItem from="1636106682411" duration="13253000" />
+      <workItem from="1636127437458" duration="8285000" />
+      <workItem from="1636361914496" duration="17919000" />
+      <workItem from="1636383141967" duration="758000" />
+      <workItem from="1636384116853" duration="1451000" />
+      <workItem from="1636386035384" duration="50000" />
+      <workItem from="1636386150595" duration="641000" />
+      <workItem from="1636388190110" duration="2110000" />
+      <workItem from="1636451549986" duration="778000" />
+      <workItem from="1636453000687" duration="6657000" />
+      <workItem from="1636464039330" duration="4182000" />
+      <workItem from="1636539201174" duration="4419000" />
+      <workItem from="1636551747741" duration="10506000" />
+      <workItem from="1636565313778" duration="2000" />
+      <workItem from="1636565485339" duration="191000" />
+      <workItem from="1636565857850" duration="2888000" />
+      <workItem from="1636625187732" duration="8208000" />
+      <workItem from="1636638210941" duration="10408000" />
+      <workItem from="1636709898939" duration="6401000" />
+      <workItem from="1636721009517" duration="1096000" />
+      <workItem from="1636727341160" duration="9774000" />
+      <workItem from="1636798176696" duration="21211000" />
+      <workItem from="1636969880592" duration="14782000" />
+      <workItem from="1636989527608" duration="6267000" />
+      <workItem from="1637056543266" duration="7344000" />
+      <workItem from="1637068066502" duration="4637000" />
+      <workItem from="1637082747241" duration="6000" />
+      <workItem from="1637083089584" duration="418000" />
+      <workItem from="1637083831439" duration="176000" />
+      <workItem from="1637144580248" duration="5163000" />
+      <workItem from="1637160988937" duration="6556000" />
+      <workItem from="1637230411613" duration="3258000" />
+      <workItem from="1637241789063" duration="3574000" />
+      <workItem from="1637257873498" duration="7606000" />
+      <workItem from="1637574571856" duration="2061000" />
+      <workItem from="1637596178190" duration="5621000" />
+      <workItem from="1637663742572" duration="720000" />
+      <workItem from="1637664831593" duration="6896000" />
+      <workItem from="1637683897094" duration="7539000" />
+      <workItem from="1637923433809" duration="622000" />
+    </task>
+    <task id="LOCAL-00010" summary="ft_striteri done">
+      <created>1636542017721</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1636542017721</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ft_split securised (free en cas de soucis)">
+      <created>1636556175307</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1636556175307</updated>
+    </task>
+    <task id="LOCAL-00012" summary="1st crash post testeur">
+      <created>1636563394075</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1636563394075</updated>
+    </task>
+    <task id="LOCAL-00013" summary="2nd fix post testeur">
+      <created>1636567187145</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1636567187145</updated>
+    </task>
+    <task id="LOCAL-00014" summary="3rd fix post testeur">
+      <created>1636710469516</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1636710469516</updated>
+    </task>
+    <task id="LOCAL-00015" summary="TESTEUR PROOF NORMALLY">
+      <created>1636736166923</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1636736166923</updated>
+    </task>
+    <task id="LOCAL-00016" summary="little fix">
+      <created>1636739823727</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1636739823727</updated>
+    </task>
+    <task id="LOCAL-00017" summary="little fix">
+      <created>1636739910456</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1636739910456</updated>
+    </task>
+    <task id="LOCAL-00018" summary="little fix">
+      <created>1636740735016</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1636740735016</updated>
+    </task>
+    <task id="LOCAL-00019" summary="ft_memchr tripouille fixed">
+      <created>1636799037525</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1636799037525</updated>
+    </task>
+    <task id="LOCAL-00020" summary="ft_memchr tripouille fixed">
+      <created>1636799083921</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1636799083921</updated>
+    </task>
+    <task id="LOCAL-00021" summary="ft_memcmp tripouille fixed">
+      <created>1636799674216</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1636799674216</updated>
+    </task>
+    <task id="LOCAL-00022" summary="ft_strrchr tripouille fixed">
+      <created>1636800417642</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1636800417642</updated>
+    </task>
+    <task id="LOCAL-00023" summary="ft_strlcpy tripouille fixed">
+      <created>1636803485486</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1636803485486</updated>
+    </task>
+    <task id="LOCAL-00024" summary="ft_strnstr tripouille fixed">
+      <created>1636803894800</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1636803894800</updated>
+    </task>
+    <task id="LOCAL-00025" summary="ft_strnstr tripouille fixed">
+      <created>1636803984517</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1636803984517</updated>
+    </task>
+    <task id="LOCAL-00026" summary="ft_strtrim tripouille fixed">
+      <created>1636809684192</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1636809684192</updated>
+    </task>
+    <task id="LOCAL-00027" summary="ft_strtrim tripouille fixed">
+      <created>1636809718509</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1636809718509</updated>
+    </task>
+    <task id="LOCAL-00028" summary="ft_strtrim + ft_memchr.c + ft_substr.c tripouille fixed">
+      <created>1636815558288</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1636815558288</updated>
+    </task>
+    <task id="LOCAL-00029" summary="retrait du main dans strtrim">
+      <created>1636815591914</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1636815591914</updated>
+    </task>
+    <task id="LOCAL-00030" summary="little fix">
+      <created>1636817227041</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1636817227041</updated>
+    </task>
+    <task id="LOCAL-00031" summary="little fix">
+      <created>1636817262596</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1636817262596</updated>
+    </task>
+    <task id="LOCAL-00032" summary="malloc fix">
+      <created>1636817797475</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1636817797475</updated>
+    </task>
+    <task id="LOCAL-00033" summary="test strtrim tripouille">
+      <created>1636821082437</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1636821082437</updated>
+    </task>
+    <task id="LOCAL-00034" summary="test strtrim tripouille">
+      <created>1636821111725</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1636821111725</updated>
+    </task>
+    <task id="LOCAL-00035" summary="test strtrim tripouille">
+      <created>1636822920884</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1636822920884</updated>
+    </task>
+    <task id="LOCAL-00036" summary="test strtrim tripouille">
+      <created>1636822948733</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1636822948733</updated>
+    </task>
+    <task id="LOCAL-00037" summary="test strtrim tripouille">
+      <created>1636823782457</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1636823782457</updated>
+    </task>
+    <task id="LOCAL-00038" summary="hpenaud try">
+      <created>1636823827662</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1636823827662</updated>
+    </task>
+    <task id="LOCAL-00039" summary="substr + strtrim fixed!">
+      <created>1636824827849</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1636824827849</updated>
+    </task>
+    <task id="LOCAL-00040" summary="split fixed">
+      <created>1636971781600</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1636971781600</updated>
+    </task>
+    <task id="LOCAL-00041" summary="try de fix split">
+      <created>1636974406447</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1636974406447</updated>
+    </task>
+    <task id="LOCAL-00042" summary="try de fix split">
+      <created>1636974445253</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1636974445253</updated>
+    </task>
+    <task id="LOCAL-00043" summary="try de fix split">
+      <created>1636974514357</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1636974514357</updated>
+    </task>
+    <task id="LOCAL-00044" summary="try de fix split">
+      <created>1636976938676</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1636976938676</updated>
+    </task>
+    <task id="LOCAL-00045" summary="try de fix split">
+      <created>1636981529186</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1636981529186</updated>
+    </task>
+    <task id="LOCAL-00046" summary="try de fix split">
+      <created>1636981555085</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1636981555085</updated>
+    </task>
+    <task id="LOCAL-00047" summary="try de fix split">
+      <created>1636982504682</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1636982504682</updated>
+    </task>
+    <task id="LOCAL-00048" summary="ALL TESTEURS GREEN">
+      <created>1637073453515</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1637073453515</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Premier ajout des fonctions bonus">
+      <created>1637172173833</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1637172173833</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Last check up">
+      <created>1637247445403</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1637247445404</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Makefile fixed">
+      <created>1637249570824</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1637249570824</updated>
+    </task>
+    <task id="LOCAL-00052" summary="fix with null node input">
+      <created>1637249737560</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1637249737561</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Last fix before correct">
+      <created>1637575459084</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1637575459084</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Last fix before correct">
+      <created>1637575474448</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1637575474448</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Last fix before correct">
+      <created>1637575660624</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1637575660624</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fix post moulinette.&#10;leaks fixed on itoa.&#10;Makefile reworked (no relink now)">
+      <created>1637690294946</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1637690294946</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Clean fixed: bonus are now clear correctly">
+      <created>1637690739610</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1637690739610</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Traduction de la doc du français en anglais">
+      <created>1637692818607</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1637692818607</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="TESTEUR PROOF NORMALLY" />
+    <MESSAGE value="ft_memchr tripouille fixed" />
+    <MESSAGE value="ft_memcmp tripouille fixed" />
+    <MESSAGE value="ft_strrchr tripouille fixed" />
+    <MESSAGE value="ft_strlcpy tripouille fixed" />
+    <MESSAGE value="ft_strnstr tripouille fixed" />
+    <MESSAGE value="ft_strtrim tripouille fixed" />
+    <MESSAGE value="ft_strtrim + ft_memchr.c + ft_substr.c tripouille fixed" />
+    <MESSAGE value="retrait du main dans strtrim" />
+    <MESSAGE value="little fix" />
+    <MESSAGE value="malloc fix" />
+    <MESSAGE value="test strtrim tripouille" />
+    <MESSAGE value="hpenaud try" />
+    <MESSAGE value="substr + strtrim fixed!" />
+    <MESSAGE value="split fixed" />
+    <MESSAGE value="try de fix split" />
+    <MESSAGE value="ALL TESTEURS GREEN" />
+    <MESSAGE value="Premier ajout des fonctions bonus" />
+    <MESSAGE value="Last check up" />
+    <MESSAGE value="Makefile fixed" />
+    <MESSAGE value="fix with null node input" />
+    <MESSAGE value="Last fix before correct" />
+    <MESSAGE value="Fix post moulinette.&#10;leaks fixed on itoa.&#10;Makefile reworked (no relink now)" />
+    <MESSAGE value="Clean fixed: bonus are now clear correctly" />
+    <MESSAGE value="Traduction de la doc du français en anglais" />
+    <option name="LAST_COMMIT_MESSAGE" value="Traduction de la doc du français en anglais" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ft_itoa.c</url>
+          <line>34</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ft_strnstr.c</url>
+          <line>35</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
