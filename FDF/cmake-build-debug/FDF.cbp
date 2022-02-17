@@ -80,7 +80,97 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/tgriffit/projects/FDF/test.c">
+		<Unit filename="//">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/colors.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/fdf.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/fdf.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/fdf_utils.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/get_next_line/get_next_line_bonus.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/get_next_line/get_next_line_bonus.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/keys.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/keys.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/keys_utils.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_atoi.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_bzero.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_calloc.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_isdigit.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_memcpy.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_split.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_strchr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_strdup.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_strjoin.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/ft_strlen.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/libft/libft.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/lines.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/matrices.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/font.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/mlx.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/mlx_int.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/mlx_int_str_to_wordtab.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/mlx_new_window.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/mlx_rgb.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/mlx_shaders.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/tgriffit/projects/FDF/minilibx_macos/mlx_xpm.c">
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/tgriffit/projects/FDF/CMakeLists.txt">

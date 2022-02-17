@@ -113,6 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /Users/tgriffit/projects/FDF/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -129,29 +130,533 @@ FDF/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/build
 .PHONY : FDF/fast
 
-test.o: test.c.o
-.PHONY : test.o
+fdf.o: fdf.c.o
+.PHONY : fdf.o
 
 # target to build an object file
-test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/test.c.o
-.PHONY : test.c.o
+fdf.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/fdf.c.o
+.PHONY : fdf.c.o
 
-test.i: test.c.i
-.PHONY : test.i
+fdf.i: fdf.c.i
+.PHONY : fdf.i
 
 # target to preprocess a source file
-test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/test.c.i
-.PHONY : test.c.i
+fdf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/fdf.c.i
+.PHONY : fdf.c.i
 
-test.s: test.c.s
-.PHONY : test.s
+fdf.s: fdf.c.s
+.PHONY : fdf.s
 
 # target to generate assembly for a file
-test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/test.c.s
-.PHONY : test.c.s
+fdf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/fdf.c.s
+.PHONY : fdf.c.s
+
+fdf_utils.o: fdf_utils.c.o
+.PHONY : fdf_utils.o
+
+# target to build an object file
+fdf_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/fdf_utils.c.o
+.PHONY : fdf_utils.c.o
+
+fdf_utils.i: fdf_utils.c.i
+.PHONY : fdf_utils.i
+
+# target to preprocess a source file
+fdf_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/fdf_utils.c.i
+.PHONY : fdf_utils.c.i
+
+fdf_utils.s: fdf_utils.c.s
+.PHONY : fdf_utils.s
+
+# target to generate assembly for a file
+fdf_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/fdf_utils.c.s
+.PHONY : fdf_utils.c.s
+
+get_next_line/get_next_line_bonus.o: get_next_line/get_next_line_bonus.c.o
+.PHONY : get_next_line/get_next_line_bonus.o
+
+# target to build an object file
+get_next_line/get_next_line_bonus.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/get_next_line/get_next_line_bonus.c.o
+.PHONY : get_next_line/get_next_line_bonus.c.o
+
+get_next_line/get_next_line_bonus.i: get_next_line/get_next_line_bonus.c.i
+.PHONY : get_next_line/get_next_line_bonus.i
+
+# target to preprocess a source file
+get_next_line/get_next_line_bonus.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/get_next_line/get_next_line_bonus.c.i
+.PHONY : get_next_line/get_next_line_bonus.c.i
+
+get_next_line/get_next_line_bonus.s: get_next_line/get_next_line_bonus.c.s
+.PHONY : get_next_line/get_next_line_bonus.s
+
+# target to generate assembly for a file
+get_next_line/get_next_line_bonus.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/get_next_line/get_next_line_bonus.c.s
+.PHONY : get_next_line/get_next_line_bonus.c.s
+
+keys.o: keys.c.o
+.PHONY : keys.o
+
+# target to build an object file
+keys.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/keys.c.o
+.PHONY : keys.c.o
+
+keys.i: keys.c.i
+.PHONY : keys.i
+
+# target to preprocess a source file
+keys.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/keys.c.i
+.PHONY : keys.c.i
+
+keys.s: keys.c.s
+.PHONY : keys.s
+
+# target to generate assembly for a file
+keys.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/keys.c.s
+.PHONY : keys.c.s
+
+keys_utils.o: keys_utils.c.o
+.PHONY : keys_utils.o
+
+# target to build an object file
+keys_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/keys_utils.c.o
+.PHONY : keys_utils.c.o
+
+keys_utils.i: keys_utils.c.i
+.PHONY : keys_utils.i
+
+# target to preprocess a source file
+keys_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/keys_utils.c.i
+.PHONY : keys_utils.c.i
+
+keys_utils.s: keys_utils.c.s
+.PHONY : keys_utils.s
+
+# target to generate assembly for a file
+keys_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/keys_utils.c.s
+.PHONY : keys_utils.c.s
+
+libft/ft_atoi.o: libft/ft_atoi.c.o
+.PHONY : libft/ft_atoi.o
+
+# target to build an object file
+libft/ft_atoi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_atoi.c.o
+.PHONY : libft/ft_atoi.c.o
+
+libft/ft_atoi.i: libft/ft_atoi.c.i
+.PHONY : libft/ft_atoi.i
+
+# target to preprocess a source file
+libft/ft_atoi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_atoi.c.i
+.PHONY : libft/ft_atoi.c.i
+
+libft/ft_atoi.s: libft/ft_atoi.c.s
+.PHONY : libft/ft_atoi.s
+
+# target to generate assembly for a file
+libft/ft_atoi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_atoi.c.s
+.PHONY : libft/ft_atoi.c.s
+
+libft/ft_bzero.o: libft/ft_bzero.c.o
+.PHONY : libft/ft_bzero.o
+
+# target to build an object file
+libft/ft_bzero.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_bzero.c.o
+.PHONY : libft/ft_bzero.c.o
+
+libft/ft_bzero.i: libft/ft_bzero.c.i
+.PHONY : libft/ft_bzero.i
+
+# target to preprocess a source file
+libft/ft_bzero.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_bzero.c.i
+.PHONY : libft/ft_bzero.c.i
+
+libft/ft_bzero.s: libft/ft_bzero.c.s
+.PHONY : libft/ft_bzero.s
+
+# target to generate assembly for a file
+libft/ft_bzero.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_bzero.c.s
+.PHONY : libft/ft_bzero.c.s
+
+libft/ft_calloc.o: libft/ft_calloc.c.o
+.PHONY : libft/ft_calloc.o
+
+# target to build an object file
+libft/ft_calloc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_calloc.c.o
+.PHONY : libft/ft_calloc.c.o
+
+libft/ft_calloc.i: libft/ft_calloc.c.i
+.PHONY : libft/ft_calloc.i
+
+# target to preprocess a source file
+libft/ft_calloc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_calloc.c.i
+.PHONY : libft/ft_calloc.c.i
+
+libft/ft_calloc.s: libft/ft_calloc.c.s
+.PHONY : libft/ft_calloc.s
+
+# target to generate assembly for a file
+libft/ft_calloc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_calloc.c.s
+.PHONY : libft/ft_calloc.c.s
+
+libft/ft_isdigit.o: libft/ft_isdigit.c.o
+.PHONY : libft/ft_isdigit.o
+
+# target to build an object file
+libft/ft_isdigit.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_isdigit.c.o
+.PHONY : libft/ft_isdigit.c.o
+
+libft/ft_isdigit.i: libft/ft_isdigit.c.i
+.PHONY : libft/ft_isdigit.i
+
+# target to preprocess a source file
+libft/ft_isdigit.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_isdigit.c.i
+.PHONY : libft/ft_isdigit.c.i
+
+libft/ft_isdigit.s: libft/ft_isdigit.c.s
+.PHONY : libft/ft_isdigit.s
+
+# target to generate assembly for a file
+libft/ft_isdigit.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_isdigit.c.s
+.PHONY : libft/ft_isdigit.c.s
+
+libft/ft_memcpy.o: libft/ft_memcpy.c.o
+.PHONY : libft/ft_memcpy.o
+
+# target to build an object file
+libft/ft_memcpy.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_memcpy.c.o
+.PHONY : libft/ft_memcpy.c.o
+
+libft/ft_memcpy.i: libft/ft_memcpy.c.i
+.PHONY : libft/ft_memcpy.i
+
+# target to preprocess a source file
+libft/ft_memcpy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_memcpy.c.i
+.PHONY : libft/ft_memcpy.c.i
+
+libft/ft_memcpy.s: libft/ft_memcpy.c.s
+.PHONY : libft/ft_memcpy.s
+
+# target to generate assembly for a file
+libft/ft_memcpy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_memcpy.c.s
+.PHONY : libft/ft_memcpy.c.s
+
+libft/ft_split.o: libft/ft_split.c.o
+.PHONY : libft/ft_split.o
+
+# target to build an object file
+libft/ft_split.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_split.c.o
+.PHONY : libft/ft_split.c.o
+
+libft/ft_split.i: libft/ft_split.c.i
+.PHONY : libft/ft_split.i
+
+# target to preprocess a source file
+libft/ft_split.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_split.c.i
+.PHONY : libft/ft_split.c.i
+
+libft/ft_split.s: libft/ft_split.c.s
+.PHONY : libft/ft_split.s
+
+# target to generate assembly for a file
+libft/ft_split.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_split.c.s
+.PHONY : libft/ft_split.c.s
+
+libft/ft_strchr.o: libft/ft_strchr.c.o
+.PHONY : libft/ft_strchr.o
+
+# target to build an object file
+libft/ft_strchr.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strchr.c.o
+.PHONY : libft/ft_strchr.c.o
+
+libft/ft_strchr.i: libft/ft_strchr.c.i
+.PHONY : libft/ft_strchr.i
+
+# target to preprocess a source file
+libft/ft_strchr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strchr.c.i
+.PHONY : libft/ft_strchr.c.i
+
+libft/ft_strchr.s: libft/ft_strchr.c.s
+.PHONY : libft/ft_strchr.s
+
+# target to generate assembly for a file
+libft/ft_strchr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strchr.c.s
+.PHONY : libft/ft_strchr.c.s
+
+libft/ft_strdup.o: libft/ft_strdup.c.o
+.PHONY : libft/ft_strdup.o
+
+# target to build an object file
+libft/ft_strdup.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strdup.c.o
+.PHONY : libft/ft_strdup.c.o
+
+libft/ft_strdup.i: libft/ft_strdup.c.i
+.PHONY : libft/ft_strdup.i
+
+# target to preprocess a source file
+libft/ft_strdup.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strdup.c.i
+.PHONY : libft/ft_strdup.c.i
+
+libft/ft_strdup.s: libft/ft_strdup.c.s
+.PHONY : libft/ft_strdup.s
+
+# target to generate assembly for a file
+libft/ft_strdup.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strdup.c.s
+.PHONY : libft/ft_strdup.c.s
+
+libft/ft_strjoin.o: libft/ft_strjoin.c.o
+.PHONY : libft/ft_strjoin.o
+
+# target to build an object file
+libft/ft_strjoin.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strjoin.c.o
+.PHONY : libft/ft_strjoin.c.o
+
+libft/ft_strjoin.i: libft/ft_strjoin.c.i
+.PHONY : libft/ft_strjoin.i
+
+# target to preprocess a source file
+libft/ft_strjoin.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strjoin.c.i
+.PHONY : libft/ft_strjoin.c.i
+
+libft/ft_strjoin.s: libft/ft_strjoin.c.s
+.PHONY : libft/ft_strjoin.s
+
+# target to generate assembly for a file
+libft/ft_strjoin.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strjoin.c.s
+.PHONY : libft/ft_strjoin.c.s
+
+libft/ft_strlen.o: libft/ft_strlen.c.o
+.PHONY : libft/ft_strlen.o
+
+# target to build an object file
+libft/ft_strlen.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strlen.c.o
+.PHONY : libft/ft_strlen.c.o
+
+libft/ft_strlen.i: libft/ft_strlen.c.i
+.PHONY : libft/ft_strlen.i
+
+# target to preprocess a source file
+libft/ft_strlen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strlen.c.i
+.PHONY : libft/ft_strlen.c.i
+
+libft/ft_strlen.s: libft/ft_strlen.c.s
+.PHONY : libft/ft_strlen.s
+
+# target to generate assembly for a file
+libft/ft_strlen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/libft/ft_strlen.c.s
+.PHONY : libft/ft_strlen.c.s
+
+lines.o: lines.c.o
+.PHONY : lines.o
+
+# target to build an object file
+lines.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/lines.c.o
+.PHONY : lines.c.o
+
+lines.i: lines.c.i
+.PHONY : lines.i
+
+# target to preprocess a source file
+lines.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/lines.c.i
+.PHONY : lines.c.i
+
+lines.s: lines.c.s
+.PHONY : lines.s
+
+# target to generate assembly for a file
+lines.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/lines.c.s
+.PHONY : lines.c.s
+
+matrices.o: matrices.c.o
+.PHONY : matrices.o
+
+# target to build an object file
+matrices.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/matrices.c.o
+.PHONY : matrices.c.o
+
+matrices.i: matrices.c.i
+.PHONY : matrices.i
+
+# target to preprocess a source file
+matrices.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/matrices.c.i
+.PHONY : matrices.c.i
+
+matrices.s: matrices.c.s
+.PHONY : matrices.s
+
+# target to generate assembly for a file
+matrices.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/matrices.c.s
+.PHONY : matrices.c.s
+
+minilibx_macos/font.o: minilibx_macos/font.c.o
+.PHONY : minilibx_macos/font.o
+
+# target to build an object file
+minilibx_macos/font.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/font.c.o
+.PHONY : minilibx_macos/font.c.o
+
+minilibx_macos/font.i: minilibx_macos/font.c.i
+.PHONY : minilibx_macos/font.i
+
+# target to preprocess a source file
+minilibx_macos/font.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/font.c.i
+.PHONY : minilibx_macos/font.c.i
+
+minilibx_macos/font.s: minilibx_macos/font.c.s
+.PHONY : minilibx_macos/font.s
+
+# target to generate assembly for a file
+minilibx_macos/font.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/font.c.s
+.PHONY : minilibx_macos/font.c.s
+
+minilibx_macos/mlx_int_str_to_wordtab.o: minilibx_macos/mlx_int_str_to_wordtab.c.o
+.PHONY : minilibx_macos/mlx_int_str_to_wordtab.o
+
+# target to build an object file
+minilibx_macos/mlx_int_str_to_wordtab.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_int_str_to_wordtab.c.o
+.PHONY : minilibx_macos/mlx_int_str_to_wordtab.c.o
+
+minilibx_macos/mlx_int_str_to_wordtab.i: minilibx_macos/mlx_int_str_to_wordtab.c.i
+.PHONY : minilibx_macos/mlx_int_str_to_wordtab.i
+
+# target to preprocess a source file
+minilibx_macos/mlx_int_str_to_wordtab.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_int_str_to_wordtab.c.i
+.PHONY : minilibx_macos/mlx_int_str_to_wordtab.c.i
+
+minilibx_macos/mlx_int_str_to_wordtab.s: minilibx_macos/mlx_int_str_to_wordtab.c.s
+.PHONY : minilibx_macos/mlx_int_str_to_wordtab.s
+
+# target to generate assembly for a file
+minilibx_macos/mlx_int_str_to_wordtab.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_int_str_to_wordtab.c.s
+.PHONY : minilibx_macos/mlx_int_str_to_wordtab.c.s
+
+minilibx_macos/mlx_rgb.o: minilibx_macos/mlx_rgb.c.o
+.PHONY : minilibx_macos/mlx_rgb.o
+
+# target to build an object file
+minilibx_macos/mlx_rgb.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_rgb.c.o
+.PHONY : minilibx_macos/mlx_rgb.c.o
+
+minilibx_macos/mlx_rgb.i: minilibx_macos/mlx_rgb.c.i
+.PHONY : minilibx_macos/mlx_rgb.i
+
+# target to preprocess a source file
+minilibx_macos/mlx_rgb.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_rgb.c.i
+.PHONY : minilibx_macos/mlx_rgb.c.i
+
+minilibx_macos/mlx_rgb.s: minilibx_macos/mlx_rgb.c.s
+.PHONY : minilibx_macos/mlx_rgb.s
+
+# target to generate assembly for a file
+minilibx_macos/mlx_rgb.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_rgb.c.s
+.PHONY : minilibx_macos/mlx_rgb.c.s
+
+minilibx_macos/mlx_shaders.o: minilibx_macos/mlx_shaders.c.o
+.PHONY : minilibx_macos/mlx_shaders.o
+
+# target to build an object file
+minilibx_macos/mlx_shaders.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_shaders.c.o
+.PHONY : minilibx_macos/mlx_shaders.c.o
+
+minilibx_macos/mlx_shaders.i: minilibx_macos/mlx_shaders.c.i
+.PHONY : minilibx_macos/mlx_shaders.i
+
+# target to preprocess a source file
+minilibx_macos/mlx_shaders.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_shaders.c.i
+.PHONY : minilibx_macos/mlx_shaders.c.i
+
+minilibx_macos/mlx_shaders.s: minilibx_macos/mlx_shaders.c.s
+.PHONY : minilibx_macos/mlx_shaders.s
+
+# target to generate assembly for a file
+minilibx_macos/mlx_shaders.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_shaders.c.s
+.PHONY : minilibx_macos/mlx_shaders.c.s
+
+minilibx_macos/mlx_xpm.o: minilibx_macos/mlx_xpm.c.o
+.PHONY : minilibx_macos/mlx_xpm.o
+
+# target to build an object file
+minilibx_macos/mlx_xpm.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_xpm.c.o
+.PHONY : minilibx_macos/mlx_xpm.c.o
+
+minilibx_macos/mlx_xpm.i: minilibx_macos/mlx_xpm.c.i
+.PHONY : minilibx_macos/mlx_xpm.i
+
+# target to preprocess a source file
+minilibx_macos/mlx_xpm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_xpm.c.i
+.PHONY : minilibx_macos/mlx_xpm.c.i
+
+minilibx_macos/mlx_xpm.s: minilibx_macos/mlx_xpm.c.s
+.PHONY : minilibx_macos/mlx_xpm.s
+
+# target to generate assembly for a file
+minilibx_macos/mlx_xpm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/minilibx_macos/mlx_xpm.c.s
+.PHONY : minilibx_macos/mlx_xpm.c.s
 
 # Help Target
 help:
@@ -162,9 +667,72 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... FDF"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... fdf.o"
+	@echo "... fdf.i"
+	@echo "... fdf.s"
+	@echo "... fdf_utils.o"
+	@echo "... fdf_utils.i"
+	@echo "... fdf_utils.s"
+	@echo "... get_next_line/get_next_line_bonus.o"
+	@echo "... get_next_line/get_next_line_bonus.i"
+	@echo "... get_next_line/get_next_line_bonus.s"
+	@echo "... keys.o"
+	@echo "... keys.i"
+	@echo "... keys.s"
+	@echo "... keys_utils.o"
+	@echo "... keys_utils.i"
+	@echo "... keys_utils.s"
+	@echo "... libft/ft_atoi.o"
+	@echo "... libft/ft_atoi.i"
+	@echo "... libft/ft_atoi.s"
+	@echo "... libft/ft_bzero.o"
+	@echo "... libft/ft_bzero.i"
+	@echo "... libft/ft_bzero.s"
+	@echo "... libft/ft_calloc.o"
+	@echo "... libft/ft_calloc.i"
+	@echo "... libft/ft_calloc.s"
+	@echo "... libft/ft_isdigit.o"
+	@echo "... libft/ft_isdigit.i"
+	@echo "... libft/ft_isdigit.s"
+	@echo "... libft/ft_memcpy.o"
+	@echo "... libft/ft_memcpy.i"
+	@echo "... libft/ft_memcpy.s"
+	@echo "... libft/ft_split.o"
+	@echo "... libft/ft_split.i"
+	@echo "... libft/ft_split.s"
+	@echo "... libft/ft_strchr.o"
+	@echo "... libft/ft_strchr.i"
+	@echo "... libft/ft_strchr.s"
+	@echo "... libft/ft_strdup.o"
+	@echo "... libft/ft_strdup.i"
+	@echo "... libft/ft_strdup.s"
+	@echo "... libft/ft_strjoin.o"
+	@echo "... libft/ft_strjoin.i"
+	@echo "... libft/ft_strjoin.s"
+	@echo "... libft/ft_strlen.o"
+	@echo "... libft/ft_strlen.i"
+	@echo "... libft/ft_strlen.s"
+	@echo "... lines.o"
+	@echo "... lines.i"
+	@echo "... lines.s"
+	@echo "... matrices.o"
+	@echo "... matrices.i"
+	@echo "... matrices.s"
+	@echo "... minilibx_macos/font.o"
+	@echo "... minilibx_macos/font.i"
+	@echo "... minilibx_macos/font.s"
+	@echo "... minilibx_macos/mlx_int_str_to_wordtab.o"
+	@echo "... minilibx_macos/mlx_int_str_to_wordtab.i"
+	@echo "... minilibx_macos/mlx_int_str_to_wordtab.s"
+	@echo "... minilibx_macos/mlx_rgb.o"
+	@echo "... minilibx_macos/mlx_rgb.i"
+	@echo "... minilibx_macos/mlx_rgb.s"
+	@echo "... minilibx_macos/mlx_shaders.o"
+	@echo "... minilibx_macos/mlx_shaders.i"
+	@echo "... minilibx_macos/mlx_shaders.s"
+	@echo "... minilibx_macos/mlx_xpm.o"
+	@echo "... minilibx_macos/mlx_xpm.i"
+	@echo "... minilibx_macos/mlx_xpm.s"
 .PHONY : help
 
 
@@ -176,6 +744,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /Users/tgriffit/projects/FDF/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -6,11 +6,12 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:40:16 by tgriffit          #+#    #+#             */
-/*   Updated: 2021/12/06 17:52:18 by tgriffit         ###   ########lyon.fr   */
+/*   Updated: 2022/01/31 18:48:25 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
+#include "../libft/libft.h"
 
 static void	reader(int fd, char **txt, t_vars *vars)
 {
@@ -18,11 +19,11 @@ static void	reader(int fd, char **txt, t_vars *vars)
 	vars->buffer[vars->bytes] = 0;
 	if (vars->rmndr)
 	{
-		*txt = ft_strjoin(*txt, vars->rmndr);
+		*txt = ft_strjoin(*txt, vars->rmndr, 1);
 		free(vars->rmndr);
 		vars->rmndr = NULL;
 	}
-	*txt = ft_strjoin(*txt, (char *)vars->buffer);
+	*txt = ft_strjoin(*txt, (char *)vars->buffer, 1);
 }
 
 static char	*get_line(const char *str, char **remainder)
@@ -56,7 +57,8 @@ static char	*get_line(const char *str, char **remainder)
  * @param fd = File descriptor to read from
  * @return Read line: correct behavior
  * \n NULL: nothing else to read or an error occurred
- */
+*/
+
 char	*get_next_line(int fd)
 {
 	char			*text;
@@ -70,13 +72,13 @@ char	*get_next_line(int fd)
 	if (!text)
 		return (NULL);
 	vars[fd].bytes = 1;
-	while (!ft_strnstr(text, "\n", ft_strlen(text)) && vars[fd].bytes > 0)
+	while (!ft_strchr(text, '\n') && vars[fd].bytes > 0)
 	{
 		reader(fd, &text, &vars[fd]);
 		if (!text)
 			return (0);
 	}
-	if (ft_strnstr(text, "\n", ft_strlen(text)) || (vars[fd].bytes == 0 && *text))
+	if (ft_strchr(text, '\n') || (vars[fd].bytes == 0 && *text))
 		return (get_line(text, &vars[fd].rmndr));
 	free(text);
 	return (NULL);
