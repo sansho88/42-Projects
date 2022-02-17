@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tgriffit/projects/minitalk/client.c
+minitalk.h
+/Users/tgriffit/projects/minitalk/minitalk.h
+stdio.h
+-
+string.h
+-
+
+/Users/tgriffit/projects/minitalk/minitalk.h
+unistd.h
+-
+stdlib.h
+-
+

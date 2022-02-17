@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tgriffit/projects/ft_printf/ft_printf.h
+libft/libft.h
+/Users/tgriffit/projects/ft_printf/libft/libft.h
+stdarg.h
+-
+
+/Users/tgriffit/projects/ft_printf/libft/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+limits.h
+-
+
+/Users/tgriffit/projects/ft_printf/main.c
+ft_printf.h
+/Users/tgriffit/projects/ft_printf/ft_printf.h
+stdio.h
+-
+
