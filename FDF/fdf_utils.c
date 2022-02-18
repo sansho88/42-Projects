@@ -41,17 +41,6 @@ int	**parsemap(int fd, int xmax, int ymax)
 	return (pmap.map);
 }
 
-int	*createcoords(int x, int y, int z)
-{
-	int	*res;
-
-	res = calloc(sizeof(float), 3);
-	res[0] = x;
-	res[1] = y;
-	res[2] = z;
-	return (res);
-}
-
 void	getmapxymax(char *pathmap, int *xmax, int *ymax)
 {
 	int		fd;

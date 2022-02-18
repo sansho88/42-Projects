@@ -6,12 +6,11 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:40:16 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/01/31 18:48:25 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:03:54 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include "../libft/libft.h"
 
 static void	reader(int fd, char **txt, t_vars *vars)
 {

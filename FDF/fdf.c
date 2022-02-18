@@ -6,13 +6,11 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:19:13 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/02/17 11:56:41 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/02/18 10:42:08 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-#include <stdio.h>
 
 /**
  * Prepare the window to be fully functionnal.
@@ -21,9 +19,7 @@
  * @param map : The map.fdf which will be drawn.
  * @return false (=0) if mlx_get_data_addr failed.
  */
-
-
-void	checkarg(int argc, char **argv, char **map)
+static void	checkarg(int argc, char **argv, char **map)
 {
 	if (argc > 1 && argc < 3)
 		*map = ft_strjoin(MAP_PATH, argv[1], 0);
@@ -38,7 +34,6 @@ void	checkarg(int argc, char **argv, char **map)
 		exit(2);
 	}
 }
-
 
 bool	drawimage(t_drawer	*drawer)
 {

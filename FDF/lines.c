@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:08:50 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/02/17 18:22:01 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:47:44 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	drawlineshorizontal(int **map, int xmax, int ymax, t_drawer *drawer)
 		while (x-- > 0)
 		{
 			free(mtx[x]);
-			mtx[x] = matrix_mul(drawer->projmtx, iso(x, y, map[y][x], 10));
+			mtx[x] = matrix_mul(drawer->projmtx, iso(x, y, map[y][x], 42));
 			if (x < xmax - 1)
 				bresenham(mtx[x + 1], mtx[x], drawer);
 		}
@@ -69,7 +69,7 @@ void	drawlinesvertical(int **map, int xmax, int ymax, t_drawer *drawer)
 		y = ymax;
 		while (y-- > 0)
 		{
-			mtx[y] = matrix_mul(drawer->projmtx, iso(x, y, map[y][x], 10));
+			mtx[y] = matrix_mul(drawer->projmtx, iso(x, y, map[y][x], 42));
 			if (y < ymax - 1)
 			{
 				bresenham(mtx[y + 1], mtx[y], drawer);
@@ -84,11 +84,8 @@ void	putlines(t_map *map, t_drawer *drawer)
 {
 	if (drawer->zoom <= 0)
 		drawer->zoom = ZOOM;
-	/*if (drawer->offset)
-		free(drawer->offset);*/
 	map->mtx = ft_calloc(sizeof(float *), map->xmax * map->ymax);
 	drawer->projmtx = setprojectionmatrix(drawer->zoom);
-	drawer->offset = ft_calloc(sizeof(float *), 2);
 	mlx_put_image_to_window(drawer->mlx, drawer->window, drawer->data.image, 0,
 		0);
 	drawlineshorizontal(map->map, map->xmax, map->ymax, drawer);
