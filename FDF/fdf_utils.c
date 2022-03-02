@@ -6,12 +6,19 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:05:26 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/02/16 19:37:50 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:37:15 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+/**
+ * Copy the map.fdf into a double-array of integers
+ * @param fd : The FileDescriptor of the map available for reading.
+ * @param xmax
+ * @param ymax
+ * @return The map parsed formatted in map[y][x]
+ */
 int	**parsemap(int fd, int xmax, int ymax)
 {
 	t_parsemap	pmap;
@@ -41,13 +48,19 @@ int	**parsemap(int fd, int xmax, int ymax)
 	return (pmap.map);
 }
 
-void	getmapxymax(char *pathmap, int *xmax, int *ymax)
+/**
+ * Used essentially for delimit the parsing at the init.
+ * @param mapname
+ * @param xmax :Address of the int which will receives the number of colomns
+ * @param ymax :Address of the int which will receives the number of lines
+ */
+void	getmapxymax(char *mapname, int *xmax, int *ymax)
 {
 	int		fd;
 	char	*s;
 	int		i;
 
-	fd = open(pathmap, O_RDONLY);
+	fd = open(mapname, O_RDONLY);
 	*ymax = 0;
 	s = get_next_line(fd);
 	while (s)
@@ -68,6 +81,13 @@ void	getmapxymax(char *pathmap, int *xmax, int *ymax)
 	close (fd);
 }
 
+float	max(float a, float b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
 float	mod(float f)
 {
 	if (f < 0)
@@ -75,6 +95,14 @@ float	mod(float f)
 	return (f);
 }
 
+/**
+ * Put the pixels into a stamp image, which will be applied by the
+ * putpixeltowindow function.
+ * @param data : Structure which contains the mlx pointers
+ * @param x : Coordinate of the pixel
+ * @param y : Coordinate of the pixel
+ * @param color : See colors.h
+ */
 void	optimized_pixelput(t_data *data, int x, int y, int color)
 {
 	char	*dst;

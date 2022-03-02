@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:19:13 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/02/18 10:42:08 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:13:59 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ static void	checkarg(int argc, char **argv, char **map)
 	}
 }
 
+/**
+ * Refresh the window cleaning and applying the new pixels
+ * @param drawer : The famoso struct
+ * @return Returns 0 if something wrong happened with the data.adress
+ */
 bool	drawimage(t_drawer	*drawer)
 {
 	drawer->data.image = mlx_new_image(drawer->mlx, WIDTH, HEIGHT);

@@ -16,13 +16,13 @@ void	bresenham(float *oldmtx, float *newmtx, t_drawer *drawer)
 {
 	float	stepx;
 	float	stepy;
-	float	max;
+	float	maxYX;
 
 	stepx = newmtx[0] - oldmtx[0];
 	stepy = newmtx[1] - oldmtx[1];
-	max = MAX(mod(stepx), mod(stepy));
-	stepx /= max;
-	stepy /= max;
+	maxYX = max(mod(stepx), mod(stepy));
+	stepx /= maxYX;
+	stepy /= maxYX;
 	while ((int)(oldmtx[0] - newmtx[0]) || (int)(oldmtx[1] - newmtx[1]))
 	{
 		optimized_pixelput(&drawer->data, (int)oldmtx[0], (int)oldmtx[1],
