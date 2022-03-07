@@ -13,11 +13,11 @@
 #include "pushswap.h"
 
 /**
- *  Shift up all elements of stack a by 1.
+ *  Shift up all elements of arr a by 1.
  *  The first element becomes the last one.
  * @param stacka
  */
-void	rotate_a(int *stacka, int size)
+void	rotate_a(int *stacka, size_t size)
 {
 	int	tmp;
 	int	i;
@@ -34,11 +34,11 @@ void	rotate_a(int *stacka, int size)
 }
 
 /**
- *  Shift up all elements of stack b by 1.
+ *  Shift up all elements of arr b by 1.
  *  The first element becomes the last one.
  * @param stackb
  */
-void	rotate_b(int *stackb, int size)
+void	rotate_b(int *stackb, size_t size)
 {
 	int	tmp;
 	int	i;
@@ -61,7 +61,7 @@ void	rotate_b(int *stackb, int size)
  * @param stackb
  * @param sizeb
  */
-void	rr(int *stacka, int sizea, int *stackb, int sizeb)
+void	rr(int *stacka, size_t sizea, int *stackb, size_t sizeb)
 {
 	int	tmp;
 	int	i;
@@ -86,12 +86,12 @@ void	rr(int *stacka, int sizea, int *stackb, int sizeb)
 }
 
 /**
- *  Shift down all elements of stack a by 1.
+ *  Shift down all elements of arr a by 1.
  *  The last element becomes the first one.
  * @param stacka
  * @param size
  */
-void	reverse_rotate_a(int *stacka, int size)
+void	reverse_rotate_a(int *stacka, size_t size)
 {
 	int	tmp;
 	int	i;
@@ -108,12 +108,12 @@ void	reverse_rotate_a(int *stacka, int size)
 }
 
 /**
- *  Shift down all elements of stack b by 1.
+ *  Shift down all elements of arr b by 1.
  *  The last element becomes the first one.
  * @param stackb
  * @param size
  */
-void	reverse_rotate_b(int *stackb, int size)
+void	reverse_rotate_b(int *stackb, size_t size)
 {
 	int	tmp;
 	int	i;

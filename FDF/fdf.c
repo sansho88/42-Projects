@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:19:13 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/02/18 11:13:59 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:35:40 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int	main(int argc, char **argv)
 	putlines(drawer.map, &drawer);
 	free(testmap);
 	mlx_key_hook(drawer.window, key_hook, &drawer);
+	mlx_hook(drawer.window, 17, 1L << 0, killfdf, &drawer);
 	mlx_loop(drawer.mlx);
 }

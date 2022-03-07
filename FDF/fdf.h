@@ -86,6 +86,7 @@ void	cleanmatrices(int **matrix, size_t	size);
 float	*matrix_mul(int **projmatrix, float *coords);
 
 // [keys.c]
+int		killfdf(t_drawer *drawer);
 int		key_hook(int keycode, t_drawer *drawer);
 
 // [fdf.c]

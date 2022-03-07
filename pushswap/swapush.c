@@ -13,12 +13,12 @@
 #include "pushswap.h"
 
 /**
- *  Swap the first 2 elements at the top of stack a.
+ *  Swap the first 2 elements at the top of arr a.
  *  Do nothing if there is only one or no elements
  * @param stacka
  * @param size : Size of stack_a
  */
-void	swap_a(int *stacka, int size)
+void	swap_a(int *stacka, size_t size)
 {
 	if (size < 2)
 		return ;
@@ -27,12 +27,12 @@ void	swap_a(int *stacka, int size)
 }
 
 /**
- *  Swap the first 2 elements at the top of stack b.
+ *  Swap the first 2 elements at the top of arr b.
  *  Do nothing if there is only one or no elements
  * @param stacka
  * @param size : Size of stack_a
  */
-void	swap_b(int *stackb, int size)
+void	swap_b(int *stackb, size_t size)
 {
 	if (size < 2)
 		return ;
@@ -47,7 +47,7 @@ void	swap_b(int *stackb, int size)
  * @param stackb
  * @param sizeb
  */
-void	ss(int *stacka, int sizea, int *stackb, int sizeb)
+void	ss(int *stacka, size_t sizea, int *stackb, size_t sizeb)
 {
 	if (sizea < 2 && sizeb < 2)
 		return ;
@@ -71,7 +71,7 @@ void	ss(int *stacka, int sizea, int *stackb, int sizeb)
  * Take the first element at the top of b and put it at the top of a.
  * Do nothing if b is empty
  */
-void	push_a(int *stacka, int *sizea, int *stackb, int *sizeb)
+void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 {
 	int	*newnumbers;
 	int	i;
@@ -103,7 +103,7 @@ void	push_a(int *stacka, int *sizea, int *stackb, int *sizeb)
  * Take the first element at the top of a and put it at the top of b.
  * Do nothing if a is empty
  */
-void	push_b(int *stacka, int *sizea, int *stackb, int *sizeb)
+void	push_b(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 {
 	int	*newnumbers;
 	int	i;
@@ -148,7 +148,7 @@ int main(void)
 		stackb[i] = 1 * 8 + i;
 	}
 	*/
-/*printf("Size of stack a = %lu; %d\n", sizeof(*stacka), stacka[82]);*//*
+/*printf("Size of arr a = %lu; %d\n", sizeof(*stacka), stacka[82]);*//*
 
 	printf("Stacka[0] = %d | Stacka[1] = %d |stackb[0] = %d | stackb[1] = %d\n", stacka[0], stacka[1], stackb[0], stackb[1]);
 	push_a(stacka, &sizea, stackb, &sizeb);

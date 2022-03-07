@@ -6,13 +6,13 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:35:47 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/02/18 11:23:41 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:27:11 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	killfdf(t_drawer *drawer)
+int	killfdf(t_drawer *drawer)
 {
 	cleanmatrices(drawer->map->map, drawer->map->ymax);
 	free(drawer->window);
@@ -42,4 +42,3 @@ int	key_hook(int keycode, t_drawer *drawer)
 		killfdf(drawer);
 	return (0);
 }
-

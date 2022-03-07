@@ -14,7 +14,11 @@
 
 void	quitps(int **stacka, int **stackb, int exitcode)
 {
-	free(*stacka);
-	free(*stackb);
+	if (*stacka)
+		free(*stacka);
+	if (*stackb)
+		free(*stackb);
+	if (exitcode == -1)
+		ft_putendl_fd("Error", 2);
 	exit(exitcode);
 }
