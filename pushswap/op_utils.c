@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 13:09:50 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/08 20:34:48 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/09 21:30:16 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,32 @@ void	swap(int *a, int *b)
 	*b = tmp;
 }
 
-int	*stackcpy(int *oldstack, int oldsize, int newsize)
+int	*stackcpy(int *oldstack, int oldsize, int newsize, int target)
 {
-	int	i;
-	int	*res;
+	int		i;
+	int		*res;
+	bool	trgtfnd;
 
 	res = ft_calloc(sizeof(int), newsize);
 	if (!res)
 		quitps(NULL, NULL, MEM_ERROR);
 	i = -1;
-	while (++i < oldsize)
+	while (++i <= oldsize)
 	{
+		if (oldsize > newsize && oldstack[i - 1] == target)
+			trgtfnd = true;
 		if (oldsize < newsize && i < newsize)
 			res[i + 1] = oldstack[i];
 		else if (oldsize > newsize && i < newsize)
-			res[i] = oldstack[i + 1];
+			res[i - trgtfnd] = oldstack[i]; //un nombre
+			// est sauté quand la target a été eliminée, ce qui explique le '0'
+			// sauvage
 	}
+	if (oldsize < newsize)
+		res[0] = target;
+	else
+		res[newsize - 1] = oldstack[oldsize - 1];
+	//if stacka->size == 1: stackb[0] == stackb[stackb->size - 1]...
 	//free(oldstack);
 	return (res);
 }

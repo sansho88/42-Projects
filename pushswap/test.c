@@ -1,6 +1,7 @@
 
 #include "pushswap.h"
 
+
 /**TODO:
  * 		- Créer les listes
  * 		- Parser les args: OK
@@ -144,7 +145,7 @@ void	radixsort_a(t_stack *stacka, t_stack *stackb, int digit)
 		while (numbersconcerned-- > 0)
 		{
 			if (stacka->arr[0] % 10 == digit)
-				push_b(stacka->arr, &stacka->size, stackb->arr, &stackb->size);
+				push_b(stacka, stackb);
 			else
 				rotate_a(stacka->arr, stacka->size);
 		}
@@ -167,7 +168,7 @@ void	radixsort_b(t_stack *stacka, t_stack *stackb, int digit)
 		while (numbersconcerned-- > 0)
 		{
 			if (stackb->arr[0] % 10 == digit)
-				push_a(stacka->arr, &stacka->size, stackb->arr, &stackb->size);
+				push_a(stacka, stackb);
 			else
 				rotate_b(stackb->arr, stackb->size);
 		}
@@ -252,6 +253,7 @@ void	set_stacks(t_stack *stack_a, t_stack *stack_b)
 	{
 		stack_b->min = getmin(stack_b->arr, stack_b->size, &stack_b->posmin);
 		stack_b->max = getmax(stack_b->arr, stack_b->size, &stack_b->posmax);
+		print(stack_b->arr, stack_b->size);
 	}
 }
 
@@ -264,8 +266,12 @@ void	set_stacks(t_stack *stack_a, t_stack *stack_b)
 void	sort_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	set_stacks(stack_a, stack_b);
-	printf("Size of stack a= %zu | min = %d\n", stack_a->size, stack_a->min);
+	/*dprintf(1, "Size of stack a= %zu | min = %d|| StackA full= ", stack_a->size,
+		   stack_a->min);
 	print(stack_a->arr, stack_a->size);
+	dprintf(1, "\n StackB Full: ");
+	print(stack_b->arr, stack_b->size);
+	puts("");*/
 	if (stack_a->posmin >= stack_a->size / 2)
 	{
 		while (stack_a->arr[0] != stack_a->min)
@@ -276,7 +282,28 @@ void	sort_stacks(t_stack *stack_a, t_stack *stack_b)
 		while (stack_a->arr[0] != stack_a->min)
 			reverse_rotate_a(stack_a->arr, stack_a->size);
 	}
-	push_b(stack_a->arr, &stack_a->size, stack_b->arr, &stack_b->size);
+	if (stack_a->size > 1)
+	{
+		push_b(stack_a, stack_b);
+		dprintf(1, "\n[CLEANING STACK A]stacka-> size = %zu VS stackb->size = "
+				   "%zu \tSTACKA MAX=%d\n",
+				stack_a->size, stack_b->size, stack_a->max);
+	}
+	else
+		while (stack_b->size > 0)
+		{
+			puts("\n [STACK A]");
+			for (int i = 0; i < stack_a->size; ++i) {
+				dprintf(1, "stacka[%d]= %d\t", i, stack_b->arr[i]);
+			}
+			puts("\n [STACK B]");
+			for (int j = 0; j < stack_b->size; ++j) {
+				dprintf(1, "stackb[%d]= %d\t", j, stack_b->arr[j]);
+			}
+			dprintf(1, "stacka-> size = %zu VS stackb->size = %zu\n",
+					stack_a->size, stack_b->size);
+			push_a(stack_a, stack_b);
+		}
 }
 
 bool	isSorted(t_stack stacka, t_stack stackb)
@@ -285,7 +312,10 @@ bool	isSorted(t_stack stacka, t_stack stackb)
 
 	i = -1;
 	if (stackb.size > 0)
+	{
+		puts("\n Stack B not empty yet!");
 		return (false);
+	}
 	while (++i < stacka.size - 1)
 		if (stacka.arr[i] > stacka.arr[i + 1])
 			return (false);
@@ -302,12 +332,15 @@ int main()
 	t_stack	stacka;
 	t_stack	stackb;
 
-	stacka.arr = arr;
+	stacka.arr = ft_calloc(sizeof(int), n);
+	for (int i = 0; i < n; ++i) {
+		stacka.arr[i] = arr[i];
+	}
 	stacka.size = n;
 	stackb.arr = ft_calloc(sizeof(int), stacka.size);
-	stackb.size = stacka.size;
+	stackb.size = 0;
 	// Function Call
-	while (stacka.size > 0)//(!isSorted(stacka, stackb))
+	while (!isSorted(stacka, stackb))
 		sort_stacks(&stacka, &stackb);
 		//radix(&stacka, &stackb);
 	puts("Result:");

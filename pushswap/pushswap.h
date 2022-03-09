@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 12:40:12 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/08 20:10:24 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/09 21:30:16 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PUSHSWAP_H
 # include "libft/libft.h"
 # include <stdbool.h>
+
+#include <stdio.h>
 
 # define MEM_ERROR -8
 
@@ -47,10 +49,10 @@ void	reverse_rotate_b(int *stackb, size_t size);
 void	swap_a(int *stacka, size_t size);
 void	swap_b(int *stackb, size_t size);
 void	ss(int *stacka, size_t sizea, int *stackb, size_t sizeb);
-void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb);
-void	push_b(int *stacka, size_t *sizea, int *stackb, size_t *sizeb);
+void	push_a(t_stack *stacka, t_stack *stackb);
+void	push_b(t_stack *stack_a, t_stack *stack_b);
 
 size_t	countnmbrsconcerned(int *arr, size_t size, int digit, int exp);
-int		*stackcpy(int *oldstack, int oldsize, int newsize);
+int		*stackcpy(int *oldstack, int oldsize, int newsize, int target);
 
 #endif

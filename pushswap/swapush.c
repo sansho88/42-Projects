@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:44:36 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/08 20:34:48 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/09 21:41:59 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ void	ss(int *stacka, size_t sizea, int *stackb, size_t sizeb)
  * Take the first element at the top of b and put it at the top of a.
  * Do nothing if b is empty
  */
-void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
+void	push_a(t_stack *stacka, t_stack *stackb)
 {
 	int	*newnumbers;
 	int	i;
 
-	if (*sizeb == 0)
+	if (stackb->size == 0)
 		return ;
 	/*newnumbers = ft_calloc(sizeof(int), *sizea + 1);
 	if (!newnumbers)
@@ -95,12 +95,13 @@ void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 		stackb[i] = stackb[i + 1];
 	}
 	free(newnumbers);*/
-	stacka = stackcpy(stacka, (int)*sizea, (int)*sizea + 1);
-	stacka[0] = stackb[0];
-	stackb = stackcpy(stackb, (int)*sizeb, (int)*sizeb - 1);
-	printf("stackb[0] = %d, stackb[max] = %d\n", stackb[0], stackb[*sizeb - 1]);
-	(*sizea)++;
-	(*sizeb)--;
+	stacka->arr = stackcpy(stacka->arr, stacka->size, stacka->size + 1,
+					  stackb->arr[0]);
+	stackb->arr = stackcpy(stackb->arr, stackb->size, stackb->size - 1,
+					  stackb->arr[0]);
+	//printf("stackb[0] = %d, stackb[max] = %d\n", stackb[0], stackb[*sizeb -1]);
+	stacka->size++;
+	stackb->size--;
 	ft_putendl_fd("pa", 1);
 }
 
@@ -108,12 +109,12 @@ void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
  * Take the first element at the top of a and put it at the top of b.
  * Do nothing if a is empty
  */
-void	push_b(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
+void push_b(t_stack *stacka, t_stack *stackb)
 {
 	int	*newnumbers;
 	int	i;
 
-	if (*sizea == 0)
+	if (stacka->size == 0)
 		return ;
 	/*newnumbers = ft_calloc(sizeof(int), *sizeb + 1);
 	if (!newnumbers)
@@ -131,11 +132,17 @@ void	push_b(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 	while (++i < *sizea)
 		stacka[i] = stacka[i + 1];
 	free(newnumbers);*/
-	stackb = stackcpy(stackb, (int)*sizeb, (int)*sizeb + 1);
-	stackb[0] = stacka[0];
-	stacka = stackcpy(stacka, (int)*sizea, (int)*sizea - 1);
-	(*sizea)--;
-	(*sizeb)++;
+/*	for (int j = 0; j < stackb->size; ++j) {
+		dprintf(1, "stackb[%d]= %d\t", j, stackb->arr[j]);
+	}
+	puts("\n");*/
+	stackb->arr = stackcpy(stackb->arr, stackb->size, stackb->size + 1,
+						 stacka->arr[0]);
+	dprintf(1, "stacka[0]= %d\n", stacka->arr[0]);
+	stacka->arr = stackcpy(stacka->arr, stacka->size, stacka->size - 1,
+						 stacka->arr[0]);
+	stacka->size--;
+	stackb->size++;
 	ft_putendl_fd("pb", 1);
 }
 
