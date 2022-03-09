@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 13:09:50 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/01 13:09:50 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:34:48 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,26 @@ void	swap(int *a, int *b)
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
+}
+
+int	*stackcpy(int *oldstack, int oldsize, int newsize)
+{
+	int	i;
+	int	*res;
+
+	res = ft_calloc(sizeof(int), newsize);
+	if (!res)
+		quitps(NULL, NULL, MEM_ERROR);
+	i = -1;
+	while (++i < oldsize)
+	{
+		if (oldsize < newsize && i < newsize)
+			res[i + 1] = oldstack[i];
+		else if (oldsize > newsize && i < newsize)
+			res[i] = oldstack[i + 1];
+	}
+	//free(oldstack);
+	return (res);
 }
 
 void	rotate_reverse_r(int *stacka, int sizea, int *stackb, int sizeb)

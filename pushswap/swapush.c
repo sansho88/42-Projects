@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:44:36 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/02 10:44:46 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:34:48 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 
 	if (*sizeb == 0)
 		return ;
-	newnumbers = ft_calloc(sizeof(int), *sizea + 1);
+	/*newnumbers = ft_calloc(sizeof(int), *sizea + 1);
 	if (!newnumbers)
 		quitps(&stacka, &stackb, EXIT_FAILURE);
 	i = -1;
@@ -91,9 +91,14 @@ void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 		i--;
 	}
 	i = -1;
-	while (++i < *sizeb)
+	while (++i < *sizeb){
 		stackb[i] = stackb[i + 1];
-	free(newnumbers);
+	}
+	free(newnumbers);*/
+	stacka = stackcpy(stacka, (int)*sizea, (int)*sizea + 1);
+	stacka[0] = stackb[0];
+	stackb = stackcpy(stackb, (int)*sizeb, (int)*sizeb - 1);
+	printf("stackb[0] = %d, stackb[max] = %d\n", stackb[0], stackb[*sizeb - 1]);
 	(*sizea)++;
 	(*sizeb)--;
 	ft_putendl_fd("pa", 1);
@@ -110,7 +115,7 @@ void	push_b(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 
 	if (*sizea == 0)
 		return ;
-	newnumbers = ft_calloc(sizeof(int), *sizeb + 1);
+	/*newnumbers = ft_calloc(sizeof(int), *sizeb + 1);
 	if (!newnumbers)
 		quitps(&stacka, &stackb, EXIT_FAILURE);
 	i = -1;
@@ -125,7 +130,10 @@ void	push_b(int *stacka, size_t *sizea, int *stackb, size_t *sizeb)
 	i = -1;
 	while (++i < *sizea)
 		stacka[i] = stacka[i + 1];
-	free(newnumbers);
+	free(newnumbers);*/
+	stackb = stackcpy(stackb, (int)*sizeb, (int)*sizeb + 1);
+	stackb[0] = stacka[0];
+	stacka = stackcpy(stacka, (int)*sizea, (int)*sizea - 1);
 	(*sizea)--;
 	(*sizeb)++;
 	ft_putendl_fd("pb", 1);

@@ -1,0 +1,5 @@
+/cmake-build-debug/
+/a.out.dSYM/
+/libft/*.o
+/CMakeLists.txt
+/a.out

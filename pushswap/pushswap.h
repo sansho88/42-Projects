@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 12:40:12 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/03 15:54:23 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:10:24 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 # include "libft/libft.h"
 # include <stdbool.h>
 
-typedef struct s_stack_a
+# define MEM_ERROR -8
+
+typedef struct s_stack
 {
 	int					*arr;
+	int					min;
+	int					max;
+	int					posmin;
+	int					posmax;
 	size_t				size;
 	struct s_stack_a	*next;
-}	t_stack_a;
-
-typedef struct s_stack_b
-{
-	int					*arr;
-	size_t				size;
-	struct s_stack__b	*next;
-}	t_stack_b;
+}	t_stack;
 
 ///////////////////////////////// FUNCTIONS ////////////////////////////////////
 
@@ -52,5 +51,6 @@ void	push_a(int *stacka, size_t *sizea, int *stackb, size_t *sizeb);
 void	push_b(int *stacka, size_t *sizea, int *stackb, size_t *sizeb);
 
 size_t	countnmbrsconcerned(int *arr, size_t size, int digit, int exp);
+int		*stackcpy(int *oldstack, int oldsize, int newsize);
 
 #endif

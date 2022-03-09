@@ -11,7 +11,7 @@
  * @return
  */
 
-bool	checkdouble(int *array)
+bool	checkdouble(int array[])
 {
 	size_t	size;
 	int		i;
@@ -53,22 +53,43 @@ int	*parseargs(int argc, char **argv)
 /////////////RADIX C+- Version ////////
 
 // A utility function to get maximum value in arr[]
-int	getmax(int arr[], int n)
+int getmax(int arr[], size_t n, int *pos)
 {
-	int	mx;
+	int	max;
 	int	i;
 
-	mx = arr[0];
+	max = arr[0];
 	i = -1;
+	*pos = 0;
 	while (++i < n)
 	{
-		if (arr[i] > mx)
-			mx = arr[i];
+		if (arr[i] > max)
+		{
+			max = arr[i];
+			*pos = i;
+		}
 	}
-	return (mx);
+	return (max);
 }
 
-// A function to do counting sort_a of arr[] according to
+int	getmin(int *arr, size_t n, int *pos)
+{
+	int	min;
+
+	min = arr[0];
+	*pos = 0;
+	while (--n > 0)
+	{
+		if (arr[n] < min) //TODO: arr[n] is NULL?
+		{
+			min = arr[n];
+			*pos = (int)n;
+		}
+	}
+	return (min);
+}
+
+// A function to do counting radixsort_a of arr[] according to
 // the digit represented by exp.
 void	countsort(int arr[], int sizearr, int exp)
 {
@@ -108,7 +129,7 @@ void	countsort(int arr[], int sizearr, int exp)
  * à l'infini.
  *
  * */
-void	sort_a(t_stack_a *stacka, t_stack_b *stackb, int digit)
+void	radixsort_a(t_stack *stacka, t_stack *stackb, int digit)
 {
 	int		i;
 	int		exp;
@@ -131,7 +152,7 @@ void	sort_a(t_stack_a *stacka, t_stack_b *stackb, int digit)
 	//}
 }
 
-void	sort_b(t_stack_a *stacka, t_stack_b *stackb, int digit)
+void	radixsort_b(t_stack *stacka, t_stack *stackb, int digit)
 {
 	int		i;
 	int		exp;
@@ -179,7 +200,7 @@ void print(int arr[], int n)
 
 // The main function to that sorts arr[] of size arrsize using
 // Radix Sort
-void	radix(t_stack_a *stacka, t_stack_b *stackb)
+/*void	radix(t_stack_a *stacka, t_stack_b *stackb)
 {
 	// Find the maximum number to know number of digits
 	int	m;
@@ -199,7 +220,7 @@ void	radix(t_stack_a *stacka, t_stack_b *stackb)
 		{
 			//countsort(arr, arrsize, exp);
 			//countnmbrsconcerned(arr, arrsize, digit++, exp);
-			sort_a(stacka, stackb, digit);
+			radixsort_a(stacka, stackb, digit);
 			exp *= 10;
 		}
 		exp = 1;
@@ -209,15 +230,56 @@ void	radix(t_stack_a *stacka, t_stack_b *stackb)
 		{
 			//countsort(arr, arrsize, exp);
 			//countnmbrsconcerned(arr, arrsize, digit++, exp);
-			sort_b(stacka, stackb, digit);
+			radixsort_b(stacka, stackb, digit);
 			exp *= 10;
 		}
 		print(stackb->arr, stackb->size);
 		puts("");
 	}
+}*/
+
+void	set_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	/*stack_a->size = sizeof(stack_a->arr) / sizeof(int);
+	printf("Size of stackawsh = %zu\n", stack_a->size);
+	stack_b->size = sizeof(stack_b->arr) / sizeof(int);*/
+	if (stack_a->size > 0)
+	{
+		stack_a->min = getmin(stack_a->arr, stack_a->size, &stack_a->posmin);
+		stack_a->max = getmax(stack_a->arr, stack_a->size, &stack_a->posmax);
+	}
+	if (stack_b->size > 0)
+	{
+		stack_b->min = getmin(stack_b->arr, stack_b->size, &stack_b->posmin);
+		stack_b->max = getmax(stack_b->arr, stack_b->size, &stack_b->posmax);
+	}
 }
 
-bool	isSorted(t_stack_a stacka, t_stack_b stackb)
+/**
+ * Trier en divisant virtuellement la pile en 2. Envoyer chaque plus petit
+ * dans la tack b, en fonction de si il est avant ou apres la moitié de la pile
+ * @param stack_a
+ * @param stack_b
+ */
+void	sort_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	set_stacks(stack_a, stack_b);
+	printf("Size of stack a= %zu | min = %d\n", stack_a->size, stack_a->min);
+	print(stack_a->arr, stack_a->size);
+	if (stack_a->posmin >= stack_a->size / 2)
+	{
+		while (stack_a->arr[0] != stack_a->min)
+			rotate_a(stack_a->arr, stack_a->size);
+	}
+	else if (stack_a->posmin < stack_a->size / 2)
+	{
+		while (stack_a->arr[0] != stack_a->min)
+			reverse_rotate_a(stack_a->arr, stack_a->size);
+	}
+	push_b(stack_a->arr, &stack_a->size, stack_b->arr, &stack_b->size);
+}
+
+bool	isSorted(t_stack stacka, t_stack stackb)
 {
 	int	i;
 
@@ -236,15 +298,18 @@ int main()
 {
 	int arr[] = { 170, 45, 75, 90, 802, 24, 2, 66 };
 	int n = sizeof(arr) / sizeof(arr[0]);
-	t_stack_a	stacka;
-	t_stack_b	stackb;
+	printf("sizeof wshwsh n= %d\n", n);
+	t_stack	stacka;
+	t_stack	stackb;
 
 	stacka.arr = arr;
 	stacka.size = n;
 	stackb.arr = ft_calloc(sizeof(int), stacka.size);
+	stackb.size = stacka.size;
 	// Function Call
-	while (!isSorted(stacka, stackb))
-		radix(&stacka, &stackb);
+	while (stacka.size > 0)//(!isSorted(stacka, stackb))
+		sort_stacks(&stacka, &stackb);
+		//radix(&stacka, &stackb);
 	puts("Result:");
 	print(stacka.arr, stacka.size);
 	dprintf(1, "\nStack b (si elle est pas vide:oupsi...): ");
