@@ -12,22 +12,30 @@
  * @return
  */
 
-bool	checkdouble(int array[])
+bool	checkdouble(int *array, size_t size) //TODO: not working if 2 same
+// numers are at the end
 {
-	size_t	size;
 	int		i;
 	int		j;
 	int		nbchecked;
+	int		cntnumber;
 
-	size = sizeof(array) / sizeof(array[0]);
+	if (size < 2)
+		return (false);
 	i = -1;
 	while (++i < size)
 	{
 		nbchecked = array[i];
+		cntnumber = 0;
 		j = -1;
-		while (++j < size - i)
+		while (++j <= i)
+		{
+			printf("array[j] = %d vs nbchecked = %d\n", array[j], nbchecked);
 			if (array[j] == nbchecked)
-				return (true);
+				cntnumber++;
+		}
+		if (cntnumber > 1 )
+			return (true);
 	}
 	return (false);
 }
@@ -37,16 +45,19 @@ int	*parseargs(int argc, char **argv)
 	int	*numbers;
 	int	i;
 
-	numbers = malloc(sizeof(int) * argc - 1);
+	numbers = ft_calloc(sizeof(int), argc - 1);
 	if (!numbers)
 		exit(EXIT_FAILURE);
 	i = 1;
-	while (i <= argc)
+	while (i <= argc - 1)
 	{
-		if (!checkdouble(numbers))
+		if (!checkdouble(numbers, i - 1))
 			numbers[i - 1] = ft_atoi(argv[i]);
 		else
+		{
+			free(numbers);
 			quitps(NULL, NULL, -1);
+		}
 		i++;
 	}
 	return (numbers);
@@ -189,6 +200,22 @@ size_t	countnmbrsconcerned(int *arr, size_t size, int digit, int exp)
 	return (count);
 }
 
+bool	isSorted(t_stack stacka, t_stack stackb)
+{
+	int	i;
+
+	i = -1;
+	/*if (stackb.size > 0)
+	{
+		puts("\n Stack B not empty yet!");
+		return (false);
+	}*/
+	while (++i < stacka.size - 1)
+		if (stacka.arr[i] > stacka.arr[i + 1])
+			return (false);
+		return (true);
+}
+
 // A utility function to print an array
 void print(int arr[], int n)
 {
@@ -253,7 +280,7 @@ void	set_stacks(t_stack *stack_a, t_stack *stack_b)
 	{
 		stack_b->min = getmin(stack_b->arr, stack_b->size, &stack_b->posmin);
 		stack_b->max = getmax(stack_b->arr, stack_b->size, &stack_b->posmax);
-		print(stack_b->arr, stack_b->size);
+		//print(stack_b->arr, stack_b->size);
 	}
 }
 
@@ -282,17 +309,17 @@ void	sort_stacks(t_stack *stack_a, t_stack *stack_b)
 		while (stack_a->arr[0] != stack_a->min)
 			reverse_rotate_a(stack_a->arr, stack_a->size);
 	}
-	if (stack_a->size > 1)
+	if (stack_a->size > 1 && !isSorted(*stack_a, *stack_b))
 	{
 		push_b(stack_a, stack_b);
-		dprintf(1, "\n[CLEANING STACK A]stacka-> size = %zu VS stackb->size = "
+		/*dprintf(1, "\n[CLEANING STACK A]stacka-> size = %zu VS stackb->size = "
 				   "%zu \tSTACKA MAX=%d\n",
-				stack_a->size, stack_b->size, stack_a->max);
+				stack_a->size, stack_b->size, stack_a->max);*/
 	}
 	else
 		while (stack_b->size > 0)
 		{
-			puts("\n [STACK A]");
+			/*puts("\n [STACK A]");
 			for (int i = 0; i < stack_a->size; ++i) {
 				dprintf(1, "stacka[%d]= %d\t", i, stack_b->arr[i]);
 			}
@@ -301,42 +328,27 @@ void	sort_stacks(t_stack *stack_a, t_stack *stack_b)
 				dprintf(1, "stackb[%d]= %d\t", j, stack_b->arr[j]);
 			}
 			dprintf(1, "stacka-> size = %zu VS stackb->size = %zu\n",
-					stack_a->size, stack_b->size);
+					stack_a->size, stack_b->size);*/
 			push_a(stack_a, stack_b);
 		}
 }
 
-bool	isSorted(t_stack stacka, t_stack stackb)
-{
-	int	i;
-
-	i = -1;
-	if (stackb.size > 0)
-	{
-		puts("\n Stack B not empty yet!");
-		return (false);
-	}
-	while (++i < stacka.size - 1)
-		if (stacka.arr[i] > stacka.arr[i + 1])
-			return (false);
-	return (true);
-}
-
 // Driver Code
 # include <stdio.h>
-int main()
+int main(int argc, char **argv)
 {
-	int arr[] = { 170, 45, 75, 90, 802, 24, 2, 66 };
+	int arr[] = { 170, -45, 75, 90, 802, 24, 2, 66 };
 	int n = sizeof(arr) / sizeof(arr[0]);
-	printf("sizeof wshwsh n= %d\n", n);
+	//printf("sizeof wshwsh n= %d\n", n);
 	t_stack	stacka;
 	t_stack	stackb;
 
-	stacka.arr = ft_calloc(sizeof(int), n);
-	for (int i = 0; i < n; ++i) {
+	//stacka.arr = ft_calloc(sizeof(int), n);
+	stacka.arr = parseargs(argc, argv);
+	/*for (int i = 0; i < n; ++i) {
 		stacka.arr[i] = arr[i];
-	}
-	stacka.size = n;
+	}*/
+	stacka.size = argc - 1;
 	stackb.arr = ft_calloc(sizeof(int), stacka.size);
 	stackb.size = 0;
 	// Function Call

@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:44:36 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/09 21:41:59 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:25:47 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,27 +78,10 @@ void	push_a(t_stack *stacka, t_stack *stackb)
 
 	if (stackb->size == 0)
 		return ;
-	/*newnumbers = ft_calloc(sizeof(int), *sizea + 1);
-	if (!newnumbers)
-		quitps(&stacka, &stackb, EXIT_FAILURE);
-	i = -1;
-	while (++i < *sizea)
-		newnumbers[i + 1] = stacka[i];
-	newnumbers[0] = stackb[0];
-	while (i >= 0)
-	{
-		stacka[i] = newnumbers[i];
-		i--;
-	}
-	i = -1;
-	while (++i < *sizeb){
-		stackb[i] = stackb[i + 1];
-	}
-	free(newnumbers);*/
 	stacka->arr = stackcpy(stacka->arr, stacka->size, stacka->size + 1,
 					  stackb->arr[0]);
 	stackb->arr = stackcpy(stackb->arr, stackb->size, stackb->size - 1,
-					  stackb->arr[0]);
+					  stacka->arr[0]);
 	//printf("stackb[0] = %d, stackb[max] = %d\n", stackb[0], stackb[*sizeb -1]);
 	stacka->size++;
 	stackb->size--;
@@ -138,10 +121,11 @@ void push_b(t_stack *stacka, t_stack *stackb)
 	puts("\n");*/
 	stackb->arr = stackcpy(stackb->arr, stackb->size, stackb->size + 1,
 						 stacka->arr[0]);
-	dprintf(1, "stacka[0]= %d\n", stacka->arr[0]);
+	//dprintf(1, "stacka[0]= %d\n", stacka->arr[0]);
 	stacka->arr = stackcpy(stacka->arr, stacka->size, stacka->size - 1,
 						 stacka->arr[0]);
-	stacka->size--;
+	if (stacka->size > 0)
+		stacka->size--;
 	stackb->size++;
 	ft_putendl_fd("pb", 1);
 }

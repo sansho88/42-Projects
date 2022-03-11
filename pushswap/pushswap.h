@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 12:40:12 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/09 21:30:16 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:18:34 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 # include "libft/libft.h"
 # include <stdbool.h>
 
-#include <stdio.h>
+# include <stdio.h>
 
 # define MEM_ERROR -8
+# define IS_EMPTY(x) x == 0
 
 typedef struct s_stack
 {
