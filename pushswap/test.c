@@ -11,7 +11,6 @@
  *
  * @return
  */
-
 bool	checkdouble(int *array, size_t size) //TODO: not working if 2 same
 // numers are at the end
 {
@@ -30,7 +29,7 @@ bool	checkdouble(int *array, size_t size) //TODO: not working if 2 same
 		j = -1;
 		while (++j <= i)
 		{
-			printf("array[j] = %d vs nbchecked = %d\n", array[j], nbchecked);
+			//printf("array[j] = %d vs nbchecked = %d\n", array[j], nbchecked);
 			if (array[j] == nbchecked)
 				cntnumber++;
 		}
@@ -48,7 +47,7 @@ int	*parseargs(int argc, char **argv)
 	numbers = ft_calloc(sizeof(int), argc - 1);
 	if (!numbers)
 		exit(EXIT_FAILURE);
-	i = 1;
+	i = 0;
 	while (i <= argc - 1)
 	{
 		if (!checkdouble(numbers, i - 1))
@@ -200,21 +199,30 @@ size_t	countnmbrsconcerned(int *arr, size_t size, int digit, int exp)
 	return (count);
 }
 
+/*
 bool	isSorted(t_stack stacka, t_stack stackb)
 {
 	int	i;
 
 	i = -1;
-	/*if (stackb.size > 0)
+	*/
+/*if (stackb.size > 0)
 	{
 		puts("\n Stack B not empty yet!");
 		return (false);
-	}*/
+	}*//*
+
+	dprintf(1, "[isSorted] \n");
+	for (int i = 0; i < stacka.size; ++i) {
+		dprintf(1, " %d |", stacka.indices[i]);
+	}
+	puts("");
 	while (++i < stacka.size - 1)
-		if (stacka.arr[i] > stacka.arr[i + 1])
+		if (stacka.indices[i] > stacka.indices[i + 1])
 			return (false);
-		return (true);
+	return (true);
 }
+*/
 
 // A utility function to print an array
 void print(int arr[], int n)
@@ -332,6 +340,7 @@ void	sort_stacks(t_stack *stack_a, t_stack *stack_b)
 			push_a(stack_a, stack_b);
 		}
 }
+/*
 
 // Driver Code
 # include <stdio.h>
@@ -345,9 +354,11 @@ int main(int argc, char **argv)
 
 	//stacka.arr = ft_calloc(sizeof(int), n);
 	stacka.arr = parseargs(argc, argv);
-	/*for (int i = 0; i < n; ++i) {
+	*/
+/*for (int i = 0; i < n; ++i) {
 		stacka.arr[i] = arr[i];
-	}*/
+	}*//*
+
 	stacka.size = argc - 1;
 	stackb.arr = ft_calloc(sizeof(int), stacka.size);
 	stackb.size = 0;
@@ -355,10 +366,13 @@ int main(int argc, char **argv)
 	while (!isSorted(stacka, stackb))
 		sort_stacks(&stacka, &stackb);
 		//radix(&stacka, &stackb);
-	puts("Result:");
+	*/
+/*puts("Result:");
 	print(stacka.arr, stacka.size);
 	dprintf(1, "\nStack b (si elle est pas vide:oupsi...): ");
-	print(stackb.arr, stackb.size);
+	print(stackb.arr, stackb.size);*//*
+
 	return (0);
 }
 
+*/

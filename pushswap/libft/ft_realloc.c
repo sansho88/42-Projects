@@ -12,7 +12,7 @@
 
 #include "libftminitalk.h"
 
-/*si l'espace mémoire libre qui suit le bloc à réallouer est suffisament
+/**si l'espace mémoire libre qui suit le bloc à réallouer est suffisament
 	 * grand, le bloc de mémoire est simplement agrandi. Par contre si l'espace
 	 * libre n'est pas suffisant, un nouveau bloc de mémoire sera alloué,
 	 * le contenu de la zone d'origine recopié dans la nouvelle zone et le bloc
@@ -33,6 +33,3 @@ void	*ft_realloc(void *ptr, size_t newsize)
 	ft_memdel(&ptr);
 	return (res);
 }
-//TODO: strdup_cat(char *dst, char *src) (free dst apres copie puis renvoyer new dest)
-
-//TODO: Integrer calloc dans la lib

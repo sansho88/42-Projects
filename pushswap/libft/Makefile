@@ -6,7 +6,7 @@
 #   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/10 17:13:35 by tgriffit          #+#    #+#             #
-#   Updated: 202#   Updated: 2021/11/23 18:52:38 by tgriffit         ###   ########.fr       #                                                              #
+#   Updated: 202#   Updated: 2022/03/23 19:50:47 by tgriffit         ###   ########.fr       #                                                              #
 # ************************************************************************** #
 
 NAME = libft.a
@@ -31,8 +31,11 @@ SRCS = ft_memset.c \
 		ft_strnstr.c \
 		ft_strncmp.c \
 		ft_atoi.c \
+		ft_atoll.c \
 		ft_isalpha.c \
 		ft_isdigit.c \
+		ft_str_isdigit.c \
+		ft_isInteger.c \
 		ft_isalnum.c \
 		ft_isascii.c \
 		ft_isprint.c \
@@ -66,7 +69,7 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c libft.h
+%.o: %.c libft.h Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)

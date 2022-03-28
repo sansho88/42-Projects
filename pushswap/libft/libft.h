@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:35:46 by tgriffit          #+#    #+#             */
-/*   Updated: 2021/11/23 18:39:25 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:18:51 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -14,6 +14,7 @@
 
 # include <string.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 
 typedef struct s_list
@@ -23,8 +24,11 @@ typedef struct s_list
 }	t_list;
 
 int				ft_atoi(const char *str);
+long long		ft_atoll(char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
+int				ft_str_isdigit(char **str, size_t size);
+bool			ft_is_integer(long long nb);
 int				ft_isalnum(int c);
 int				ft_isprint(int c);
 int				ft_isascii(int c);
@@ -48,7 +52,7 @@ void			*ft_memchr(const void *s, int c, size_t n);
 char			*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
-char			**ft_split(char const *s, char c);
+char			**ft_split(char const *s, char c, int *len);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));

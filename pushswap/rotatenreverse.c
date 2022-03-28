@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:14:42 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/02 15:32:52 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:49:08 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void	reverse_rotate_a(int *stacka, size_t size)
 	int	tmp;
 	int	i;
 
-	tmp = stacka[size - 1];
 	i = size - 1;
+	tmp = stacka[i];
 	while (i > 0)
 	{
 		stacka[i] = stacka[i - 1];

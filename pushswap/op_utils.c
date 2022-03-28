@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 13:09:50 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/10 17:31:16 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:55:26 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ int	*stackcpy(int *oldstack, int oldsize, int newsize, int target)
 	if (!res)
 		quitps(NULL, NULL, MEM_ERROR);
 	i = -1;
-	while (++i <= oldsize)
+	while (++i <= oldsize + 1)
 	{
-		if (oldsize > newsize && i > 0 && oldstack[i - 1] == target)
+		if (oldsize > newsize && i > 0 && i < newsize && oldstack[i - 1]
+			== target)
 			trgtfnd = true;
-		if (oldsize < newsize && i < newsize - 1)
+		if (oldsize < newsize && i < oldsize)
 			res[i + 1] = oldstack[i];
 		else if (oldsize > newsize && i < newsize)
 			res[i - trgtfnd] = oldstack[i];
 	}
 	if (oldsize < newsize)
 		res[0] = target;
-	else
-		res[newsize - 1] = oldstack[oldsize - 1];
-	//if stacka->size == 1: stackb[0] == stackb[stackb->size - 1]...
+	else if (newsize > 0)
+		res[newsize - 1] = oldstack[newsize];
 	free(oldstack);
 	return (res);
 }

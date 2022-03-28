@@ -97,7 +97,7 @@ static int	ft_givememspace(char const *s, char c, char **res, int nbseps)
 * @return Le tableau de nouvelles chaines de caractères,
 * résultant du découpage. NULL si l’allocation échoue.
 */
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, int *len)
 {
 	char	**res;
 	int		nbseps;
@@ -105,6 +105,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	nbseps = ft_sepscntr(s, c);
+	*len = nbseps;
 	res = (char **)malloc(sizeof(char *) * (nbseps + 1));
 	if (!res)
 		return (0);
