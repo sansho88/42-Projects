@@ -88,7 +88,7 @@ void	push_a(t_stack *stacka, t_stack *stackb)
  * Take the first element at the top of a and put it at the top of b.
  * Do nothing if a is empty
  */
-void push_b(t_stack *stacka, t_stack *stackb)
+void	push_b(t_stack *stacka, t_stack *stackb)
 {
 	if (stacka->size == 0)
 		return ;
@@ -101,27 +101,3 @@ void push_b(t_stack *stacka, t_stack *stackb)
 	stackb->size++;
 	ft_putendl_fd("pb", 1);
 }
-
-/*
-#include <stdio.h>
-int main(void)
-{
-	int	*stacka, *stackb, sizea, sizeb;
-
-	stacka = ft_calloc(sizeof(int), 100);
-	stackb = ft_calloc(sizeof(int), 10);
-	sizea = 40;
-	sizeb = 2;
-	for (int i = 0; i <= sizea; ++i) {
-		stacka[i] = i +5;
-	}
-	for (int i = 0; i < sizeb; ++i) {
-		stackb[i] = 1 * 8 + i;
-	}
-	*/
-/*printf("Size of arr a = %lu; %d\n", sizeof(*stacka), stacka[82]);*//*
-
-	printf("Stacka[0] = %d | Stacka[1] = %d |stackb[0] = %d | stackb[1] = %d\n", stacka[0], stacka[1], stackb[0], stackb[1]);
-	push_a(stacka, &sizea, stackb, &sizeb);
-	printf("Stacka[0] = %d | Stacka[1] = %d |stackb[0] = %d | stackb[1] = %d\n", stacka[0], stacka[1], stackb[0], stackb[1]);
-}*/

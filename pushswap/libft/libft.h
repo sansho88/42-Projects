@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:35:46 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/25 17:18:51 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/28 19:24:21 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -44,6 +44,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strdup(const char *s1);
+bool			ft_striseq(char const *s1, char const *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -52,7 +53,7 @@ void			*ft_memchr(const void *s, int c, size_t n);
 char			*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
-char			**ft_split(char const *s, char c, int *len);
+char			**ft_split(char *s, char c, int *len);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));

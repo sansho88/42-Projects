@@ -6,7 +6,7 @@
 #   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/10 17:13:35 by tgriffit          #+#    #+#             #
-#   Updated: 202#   Updated: 2022/03/23 19:50:47 by tgriffit         ###   ########.fr       #                                                              #
+#   Updated: 202#   Updated: 2022/03/28 18:35:08 by tgriffit         ###   ########.fr       #                                                              #
 # ************************************************************************** #
 
 NAME = libft.a
@@ -43,6 +43,7 @@ SRCS = ft_memset.c \
 		ft_tolower.c \
 		ft_calloc.c \
 		ft_strdup.c \
+		ft_striseq.c \
 		ft_substr.c \
 		ft_strjoin.c \
 		ft_strtrim.c \

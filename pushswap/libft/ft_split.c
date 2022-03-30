@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:58:58 by tgriffit          #+#    #+#             */
-/*   Updated: 2021/11/16 15:00:58 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/03/30 11:09:38 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	ft_givememspace(char const *s, char c, char **res, int nbseps)
 * @return Le tableau de nouvelles chaines de caractères,
 * résultant du découpage. NULL si l’allocation échoue.
 */
-char	**ft_split(char const *s, char c, int *len)
+char	**ft_split(char *s, char c, int *len)
 {
 	char	**res;
 	int		nbseps;
