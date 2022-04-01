@@ -6,7 +6,7 @@
 #   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/10 17:13:35 by tgriffit          #+#    #+#             #
-#   Updated: 202#   Updated: 2022/03/28 18:35:08 by tgriffit         ###   ########.fr       #                                                              #
+#   Updated: 2022/04/01 18:10:22 by tgriffit         ###   ########.fr       #
 # ************************************************************************** #
 
 NAME = libft.a
@@ -17,12 +17,9 @@ AR =  @ar rcs
 RM = @rm -f
 HEADER = ./includes/
 
-SRCS = ft_memset.c \
-		ft_bzero.c \
+SRCS = ft_bzero.c \
 		ft_memcpy.c \
 		ft_memmove.c \
-		ft_memchr.c \
-		ft_memcmp.c \
 		ft_strlen.c \
 		ft_strlcpy.c \
 		ft_strlcat.c \
@@ -36,11 +33,6 @@ SRCS = ft_memset.c \
 		ft_isdigit.c \
 		ft_str_isdigit.c \
 		ft_isInteger.c \
-		ft_isalnum.c \
-		ft_isascii.c \
-		ft_isprint.c \
-		ft_toupper.c \
-		ft_tolower.c \
 		ft_calloc.c \
 		ft_strdup.c \
 		ft_striseq.c \
@@ -49,24 +41,12 @@ SRCS = ft_memset.c \
 		ft_strtrim.c \
 		ft_split.c \
 		ft_itoa.c \
-		ft_strmapi.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
-		ft_striteri.c
+		ft_putnbr_fd.c
 
-SRCS_BONUS = 	ft_lstnew.c \
-	  		ft_lstadd_front.c \
-	  		ft_lstsize.c \
-	  		ft_lstlast.c \
-	  		ft_lstadd_back.c \
-	  		ft_lstdelone.c \
-	  		ft_lstclear.c \
-	  		ft_lstiter.c \
-	  		ft_lstmap.c
 OBJS = $(SRCS:.c=.o)
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -77,17 +57,13 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 	@echo "Libft is ready now!"
 
-bonus: $(NAME) $(OBJS_BONUS)
-	$(AR) $(NAME) $(OBJS_BONUS)
-	@echo "All bonus are included now!"
-
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)
-	@echo "Clean!"
+	@echo "libft clean"
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: clean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

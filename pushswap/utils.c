@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:10:14 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/03/30 19:29:12 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/04/01 12:09:55 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	quitps(int **stacka, int **stackb, int exitcode)
  */
 bool	is_sorted(t_stack stacka, t_stack stackb, bool check_sb)
 {
-	int	i;
+	size_t	i;
 
 	i = -1;
 	if (check_sb == true && stackb.size > 0)
@@ -70,10 +70,10 @@ bool	is_sorted(t_stack stacka, t_stack stackb, bool check_sb)
  */
 static bool	checkdouble(int const *array, size_t size)
 {
-	int		i;
-	int		j;
-	int		nbchecked;
-	int		cntnumber;
+	size_t		i;
+	size_t		j;
+	int			nbchecked;
+	int			cntnumber;
 
 	if (size < 2)
 		return (false);

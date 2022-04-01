@@ -19,8 +19,8 @@
  */
 void	rotate_a(int *stacka, size_t size)
 {
-	int	tmp;
-	int	i;
+	int		tmp;
+	size_t	i;
 
 	tmp = stacka[0];
 	i = 0;
@@ -40,8 +40,8 @@ void	rotate_a(int *stacka, size_t size)
  */
 void	rotate_b(int *stackb, size_t size)
 {
-	int	tmp;
-	int	i;
+	int		tmp;
+	size_t	i;
 
 	tmp = stackb[0];
 	i = 0;
@@ -63,8 +63,8 @@ void	rotate_b(int *stackb, size_t size)
  */
 void	rr(int *stacka, size_t sizea, int *stackb, size_t sizeb)
 {
-	int	tmp;
-	int	i;
+	int		tmp;
+	size_t	i;
 
 	tmp = stacka[0];
 	i = 0;
@@ -93,8 +93,8 @@ void	rr(int *stacka, size_t sizea, int *stackb, size_t sizeb)
  */
 void	reverse_rotate_a(int *stacka, size_t size)
 {
-	int	tmp;
-	int	i;
+	int		tmp;
+	size_t	i;
 
 	i = size - 1;
 	tmp = stacka[i];
@@ -115,8 +115,8 @@ void	reverse_rotate_a(int *stacka, size_t size)
  */
 void	reverse_rotate_b(int *stackb, size_t size)
 {
-	int	tmp;
-	int	i;
+	int		tmp;
+	size_t	i;
 
 	tmp = stackb[size - 1];
 	i = size - 1;
