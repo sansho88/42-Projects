@@ -66,6 +66,7 @@ void	ft_sort_less_than5(t_stack *stack_a, t_stack *stack_b);
 // [sort.c]
 void	ft_sort(t_stack *stack_a, t_stack *stack_b, int argc);
 void	free_argv(char **argv, int argc);
+bool	check_arg(char *arg);
 
 size_t	countnmbrsconcerned(int *arr, size_t size, int digit, int exp);
 int		*stackcpy(int *oldstack, int oldsize, int newsize, int target);

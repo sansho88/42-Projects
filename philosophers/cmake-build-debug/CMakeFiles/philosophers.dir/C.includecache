@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tgriffit/projects/philosophers/ft_printf/ft_printf.h
+libft/libft.h
+/Users/tgriffit/projects/philosophers/ft_printf/libft/libft.h
+stdarg.h
+-
+
+/Users/tgriffit/projects/philosophers/ft_printf/libft/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+limits.h
+-
+
+/Users/tgriffit/projects/philosophers/main.c
+philo.h
+/Users/tgriffit/projects/philosophers/philo.h
+
+/Users/tgriffit/projects/philosophers/philo.h
+stdio.h
+-
+pthread.h
+-
+sys/time.h
+-
+stdbool.h
+-
+unistd.h
+-
+stdlib.h
+-
+ft_printf/ft_printf.h
+/Users/tgriffit/projects/philosophers/ft_printf/ft_printf.h
+

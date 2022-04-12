@@ -1,13 +1,23 @@
-# ************************************************************************** #
-#                                                                            #
-#                                                        :::      ::::::::   #
-#   Makefile                                           :+:      :+:    :+:   #
-#                                                    +:+ +:+         +:+     #
-#   By: tgriffit <tgriffit@student.42lyon.fr>      +#+  +:+       +#+        #
-#                                                +#+#+#+#+#+   +#+           #
-#   Created: 2021/11/10 17:13:35 by tgriffit          #+#    #+#             #
-#   Updated: 2022/04/01 18:10:22 by tgriffit         ###   ########.fr       #
-# ************************************************************************** #
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/04/04 11:56:35 by tgriffit          #+#    #+#              #
+#    Updated: 2022/04/04 16:19:04 by tgriffit         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+BBLU 		=	\033[1;34m
+BGREEN		=	\033[1;32m
+BRED		=	\033[1;31m
+BLU 		=	\033[0;34m
+GRN 		=	\033[0;32m
+RED 		=	\033[0;31m
+RST 		=	\033[0m
 
 NAME = libft.a
 
@@ -51,19 +61,20 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 %.o: %.c libft.h Makefile
+	@echo "\033c\033[93mLibft is compiling\033[0m"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
-	@echo "Libft is ready now!"
+	@echo "\033[r\033[1;32mLibft is ready now!\033[0m"
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)
-	@echo "libft clean"
+	@echo "\033[0;31mlibft clean\033[0m"
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re

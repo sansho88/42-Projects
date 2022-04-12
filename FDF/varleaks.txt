@@ -1,0 +1,15 @@
+leaks Report Version: 4.0
+Process 48750: 19842 nodes malloced for 15642 KB
+Process 48750: 9 leaks for 144 total leaked bytes.
+
+    9 (144 bytes) << TOTAL >>
+      1 (16 bytes) ROOT LEAK: 0x7fd8585172a0 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd85852d030 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd85852d200 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd85852df80 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd85853cd70 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd85853cd80 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd858540b80 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd858540b90 [16]  length: 1  ""
+      1 (16 bytes) ROOT LEAK: 0x7fd858540be0 [16]  length: 1  ""
+

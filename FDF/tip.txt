@@ -1,0 +1,2 @@
+ISO FDF: (permettrai d’afficher la map de facon pas degueu) x = (x - y) / sqrt(2)
+Y = (x - y + z) / sqrt(6)
