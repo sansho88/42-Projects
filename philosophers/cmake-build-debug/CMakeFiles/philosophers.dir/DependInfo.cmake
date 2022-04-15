@@ -9,11 +9,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/tgriffit/projects/philosophers/main.c" "/Users/tgriffit/projects/philosophers/cmake-build-debug/CMakeFiles/philosophers.dir/main.c.o"
+  "/Users/tgriffit/projects/philosophers/utils/ft_atoi.c" "/Users/tgriffit/projects/philosophers/cmake-build-debug/CMakeFiles/philosophers.dir/utils/ft_atoi.c.o"
+  "/Users/tgriffit/projects/philosophers/utils/ft_isdigit.c" "/Users/tgriffit/projects/philosophers/cmake-build-debug/CMakeFiles/philosophers.dir/utils/ft_isdigit.c.o"
+  "/Users/tgriffit/projects/philosophers/utils/ft_str_isdigit.c" "/Users/tgriffit/projects/philosophers/cmake-build-debug/CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "../utils"
   )
 
 # The set of dependency files which are needed:

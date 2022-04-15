@@ -153,6 +153,78 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/main.c.s
 .PHONY : main.c.s
 
+utils/ft_atoi.o: utils/ft_atoi.c.o
+.PHONY : utils/ft_atoi.o
+
+# target to build an object file
+utils/ft_atoi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_atoi.c.o
+.PHONY : utils/ft_atoi.c.o
+
+utils/ft_atoi.i: utils/ft_atoi.c.i
+.PHONY : utils/ft_atoi.i
+
+# target to preprocess a source file
+utils/ft_atoi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_atoi.c.i
+.PHONY : utils/ft_atoi.c.i
+
+utils/ft_atoi.s: utils/ft_atoi.c.s
+.PHONY : utils/ft_atoi.s
+
+# target to generate assembly for a file
+utils/ft_atoi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_atoi.c.s
+.PHONY : utils/ft_atoi.c.s
+
+utils/ft_isdigit.o: utils/ft_isdigit.c.o
+.PHONY : utils/ft_isdigit.o
+
+# target to build an object file
+utils/ft_isdigit.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_isdigit.c.o
+.PHONY : utils/ft_isdigit.c.o
+
+utils/ft_isdigit.i: utils/ft_isdigit.c.i
+.PHONY : utils/ft_isdigit.i
+
+# target to preprocess a source file
+utils/ft_isdigit.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_isdigit.c.i
+.PHONY : utils/ft_isdigit.c.i
+
+utils/ft_isdigit.s: utils/ft_isdigit.c.s
+.PHONY : utils/ft_isdigit.s
+
+# target to generate assembly for a file
+utils/ft_isdigit.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_isdigit.c.s
+.PHONY : utils/ft_isdigit.c.s
+
+utils/ft_str_isdigit.o: utils/ft_str_isdigit.c.o
+.PHONY : utils/ft_str_isdigit.o
+
+# target to build an object file
+utils/ft_str_isdigit.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.o
+.PHONY : utils/ft_str_isdigit.c.o
+
+utils/ft_str_isdigit.i: utils/ft_str_isdigit.c.i
+.PHONY : utils/ft_str_isdigit.i
+
+# target to preprocess a source file
+utils/ft_str_isdigit.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.i
+.PHONY : utils/ft_str_isdigit.c.i
+
+utils/ft_str_isdigit.s: utils/ft_str_isdigit.c.s
+.PHONY : utils/ft_str_isdigit.s
+
+# target to generate assembly for a file
+utils/ft_str_isdigit.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.s
+.PHONY : utils/ft_str_isdigit.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +237,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... utils/ft_atoi.o"
+	@echo "... utils/ft_atoi.i"
+	@echo "... utils/ft_atoi.s"
+	@echo "... utils/ft_isdigit.o"
+	@echo "... utils/ft_isdigit.i"
+	@echo "... utils/ft_isdigit.s"
+	@echo "... utils/ft_str_isdigit.o"
+	@echo "... utils/ft_str_isdigit.i"
+	@echo "... utils/ft_str_isdigit.s"
 .PHONY : help
 
 

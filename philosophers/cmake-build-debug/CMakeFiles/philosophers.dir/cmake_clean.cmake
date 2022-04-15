@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/philosophers.dir/main.c.o"
+  "CMakeFiles/philosophers.dir/utils/ft_atoi.c.o"
+  "CMakeFiles/philosophers.dir/utils/ft_isdigit.c.o"
+  "CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.o"
   "philosophers"
   "philosophers.pdb"
 )

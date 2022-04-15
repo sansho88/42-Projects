@@ -63,4 +63,4 @@ fclean: libftclean clean mlxclean
 re: fclean all
 
 .PHONY: all clean fclean re libftmake libftclean mlxmake
-.SILENT:
+#.SILENT:

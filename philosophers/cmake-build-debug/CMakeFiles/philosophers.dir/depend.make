@@ -4,3 +4,10 @@
 CMakeFiles/philosophers.dir/main.c.o: \
  ../main.c \
  ../philo.h
+CMakeFiles/philosophers.dir/utils/ft_atoi.c.o: \
+ ../utils/ft_atoi.c
+CMakeFiles/philosophers.dir/utils/ft_isdigit.c.o: \
+ ../utils/ft_isdigit.c
+CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.o: \
+ ../philo.h \
+ ../utils/ft_str_isdigit.c
