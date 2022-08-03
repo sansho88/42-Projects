@@ -14,7 +14,7 @@ NAME := philo
 CC := gcc
 FLAGS := -Wall -Wextra -Werror
 SANI := -fsanitize=address -g3
-
+THREAD := -pthread
 DIR_UTILS := utils/
 
 SRCS := main.c \
@@ -30,7 +30,7 @@ all: $(NAME)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-		$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+		$(CC) $(FLAGS) $(OBJS) $(THREAD) -o $(NAME)
 		@echo "philo:\t\033[1;32m[READY]\033[0m"
 		@echo "You can use it like:"
 		@echo "\033[7m./philo [number_of_philosophers] [time_to_die]" \

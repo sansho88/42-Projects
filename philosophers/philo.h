@@ -34,8 +34,8 @@ typedef struct s_philo{
 	bool			isalive;
 	struct timeval	birth;
 	struct timeval	lastmeal;
-	struct s_fork	fork;
-	struct s_fork	*nextfork;
+	pthread_mutex_t	fork;
+	pthread_mutex_t	nextfork;
 }	t_philo;
 
 int		ft_str_isdigit(char **str, size_t size);
