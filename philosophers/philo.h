@@ -35,11 +35,17 @@ typedef struct s_philo{
 	struct timeval	birth;
 	struct timeval	lastmeal;
 	pthread_mutex_t	fork;
-	pthread_mutex_t	nextfork;
+	pthread_mutex_t	*nextfork;
+	struct s_philo	*nextphilo;
+	size_t			nb_philos;
+	bool			letsgo;
 }	t_philo;
 
 int		ft_str_isdigit(char **str, size_t size);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
+void	dream(t_philo philo, useconds_t time);
+void	think(t_philo philosoph);
+bool	eat(t_philo *philo, useconds_t time);
 
 #endif
