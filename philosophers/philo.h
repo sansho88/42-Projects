@@ -20,6 +20,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# define TIMESTAMP (temps.tv_sec * 1000 + temps.tv_usec / 1000) - (philo->birth.tv_sec * 1000 + philo->birth.tv_usec / 1000)
+
 typedef struct s_fork{
 	pthread_mutex_t	isfree;
 }	t_fork;
@@ -36,9 +38,9 @@ typedef struct s_philo{
 	struct timeval	lastmeal;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*nextfork;
-	struct s_philo	*nextphilo;
 	size_t			nb_philos;
 	bool			letsgo;
+	struct s_philo	**cavern;
 }	t_philo;
 
 int		ft_str_isdigit(char **str, size_t size);
@@ -47,5 +49,6 @@ int		ft_atoi(const char *str);
 void	dream(t_philo philo, useconds_t time);
 void	think(t_philo philosoph);
 bool	eat(t_philo *philo, useconds_t time);
+bool	isphilo_alive(t_philo *philo);
 
 #endif
