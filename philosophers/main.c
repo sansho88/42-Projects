@@ -6,12 +6,11 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:03:55 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/04/15 17:50:13 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/10 17:27:09 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-int nb_locks = 0;
 
 size_t	ft_strlen(const char *string)
 {
@@ -41,30 +40,27 @@ void	myusleep(useconds_t time)
 		gettimeofday(&temps, NULL);
 		timestamp =(temps.tv_sec * 1000 + temps.tv_usec / 1000 )- (start.tv_sec * 1000 + start.tv_usec / 1000);
 	}
-	//printf("[%s2] timestamp(%u) vs time(%u)\n", __func__,timestamp, time);
+	//printf("[%s2] ft_timer(philo)(%u) vs time(%u)\n", __func__,ft_timer(philo), time);
 }
 
 void	print_act(t_philo *philo, const char *act, bool finish)
 {
-	useconds_t		timestamp;
 	struct timeval	temps;
-	pthread_mutex_t	mtx;
 
 	if (philo->letsgo == false)
 		return ;
-	pthread_mutex_init(&mtx, NULL);
-	pthread_mutex_lock(&mtx);
+	pthread_mutex_lock(&philo->mtxlist.print);
 	gettimeofday(&temps, NULL);
-	timestamp = TIMESTAMP;//temps.tv_usec / 1000 - philo.birth.tv_usec / 1000;
+	//temps.tv_usec / 1000 - philo.birth.tv_usec / 1000;
 	//dprintf(2, "[BIRTH]%ld vs timestamp(%u)\n", philo.birth.tv_usec, timestamp);
 	if (finish == false)
 	{
-		printf("[%dms]\t%d is %sing\n", timestamp, (int)philo->id, act);
-		pthread_mutex_unlock(&mtx);
-		pthread_mutex_destroy(&mtx);
+		printf("[%ldms]\t%d is %sing\n", ft_timer(philo), (int)philo->id, act);
+		pthread_mutex_unlock(&philo->mtxlist.print);
+		//pthread_mutex_destroy(&mtx);
 	}
-	else
-		printf("[%dms]\t%d died T-T\n",timestamp, (int)philo->id);
+	/*else
+		printf("[%dms]\t%d died T-T\n", ft_timer(philo), (int)philo->id);*/
 }
 
 bool	eat(t_philo *philo, useconds_t time)
@@ -74,7 +70,7 @@ bool	eat(t_philo *philo, useconds_t time)
 	think(*philo);
 	pthread_mutex_lock(&philo->fork);
 	gettimeofday(&temps, NULL);
-	printf("[%ldms]\t%zu has taken his fork (%p)\n",TIMESTAMP, philo->id, &philo->fork);
+	printf("[%ldms]\t%zu has taken his fork (%p)\n",ft_timer(philo), philo->id, &philo->fork);
 	if (philo->nb_philos < 2)
 	{
 		philo->isalive = false;
@@ -82,26 +78,14 @@ bool	eat(t_philo *philo, useconds_t time)
 	}
 	pthread_mutex_lock(philo->nextfork);
 	gettimeofday(&temps, NULL);
-	printf("[%ldms]\t%zu has taken an other fork (%p)\n",
-		   TIMESTAMP, philo->id, philo->nextfork);
+	gettimeofday(&philo->lastmeal, NULL);
+	printf("[%ldms]\t%zu has taken an other fork (%p)\n", ft_timer(philo),
+		philo->id, philo->nextfork);
 	print_act(philo, __func__, false);
 	myusleep(time);
-	/*if ((temps.tv_usec - philo->lastmeal.tv_usec) >= philo->lifetime)
-	{
-		nb_locks -= 2;
-		philo->isalive = false;
-		printf("[%ldms]\t%d died (time vs starve = %ld vs %ld)\n", TIMESTAMP,
-			   (int)philo->id, (temps.tv_usec - philo->lastmeal.tv_usec), philo->starve);
-		return (false);
-	}*/
-	gettimeofday(&philo->lastmeal, NULL);
-	/*if (isphilo_alive(philo))
-	{*/
-		pthread_mutex_unlock(&philo->fork);
-		pthread_mutex_unlock(philo->nextfork);
-		return (true);
-	//}
-	return (false);
+	pthread_mutex_unlock(&philo->fork);
+	pthread_mutex_unlock(philo->nextfork);
+	return (true);
 }
 
 void	dream(t_philo philo, useconds_t time)
@@ -145,17 +129,24 @@ void turnoff_philos(size_t nb_philos, t_philo **cavern)
 	}
 }
 
+long ft_timer(t_philo	*philo)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000) - (philo->birth.tv_sec *
+			1000 + philo->birth.tv_usec / 1000);
+}
+
 bool	isphilo_alive(t_philo *philo)
 {
-	pthread_mutex_t	checker;
 	bool			answer;
 
-	pthread_mutex_init(&checker, NULL);
-	pthread_mutex_lock(&checker);
+	pthread_mutex_lock(&philo->mtxlist.is_philo_alive);
 	answer = philo->isalive;
-	pthread_mutex_unlock(&checker);
+	//if (answer == true)
+	pthread_mutex_unlock(&philo->mtxlist.is_philo_alive);
 	return (answer);
-
 }
 
 void	*check_philo_health(void *philosoph) //fixme: faire en sorte que la mort stop tout (mutex?)
@@ -171,17 +162,17 @@ void	*check_philo_health(void *philosoph) //fixme: faire en sorte que la mort st
 	while (isphilo_alive(philo)) {
 		gettimeofday(&temps, NULL);
 		if ((temps.tv_sec * 1000 + temps.tv_usec / 1000 ) - (philo->lastmeal.tv_sec * 1000 + philo->lastmeal.tv_usec / 1000) >= philo->lifetime){//(temps.tv_usec / 100 - philo->lastmeal.tv_usec / 100) >= philo->starve) {
-			dprintf(2, "[%s]lastmeal(=%ld) >= philo->starve(%ld)\n",
-					__func__,  (temps.tv_sec * 1000 + temps.tv_usec / 1000 ) - (philo->lastmeal.tv_sec * 1000 + philo->lastmeal.tv_usec / 1000), philo->lifetime);
+			dprintf(2, "[%s: %zu]lastmeal(=%ld) >= philo->lifetime(%d)\n",
+					__func__,philo->id, (temps.tv_sec * 1000 + temps.tv_usec / 1000 ) - (philo->lastmeal.tv_sec * 1000 + philo->lastmeal.tv_usec / 1000), philo->lifetime);
 			philo->isalive = false;
-			//dprintf(2, "lastmeal=%ld\n", philo->lastmeal.tv_usec);
+			dprintf(2, "[id: %zu]lastmeal=%d\n", philo->id, philo->lastmeal.tv_usec);
 			print_act(philo, "died", true);
 			//exit(-42);
 		}
-		usleep(10);
+		//usleep(10);
 	}
 	gettimeofday(&temps, NULL);
-	printf("[%ldms]\t%d died (philo health checker)\n", TIMESTAMP, (int) philo->id);
+	printf("[%ldms]\t%d died (philo health checker)\n", ft_timer(philo), (int) philo->id);
 	if (philo->letsgo)
 		turnoff_philos(philo->nb_philos, philo->cavern);
 
@@ -205,6 +196,7 @@ size_t	welcome_philos(t_philo *philo, size_t id, char **argv, int argc)
 	philo->id = id;
 	philo->lifetime = ft_atoi(argv[2]);
 	philo->starve = ft_atoi(argv[3]);
+	philo->mtxlist = init_mutexs();
 	gettimeofday(&philo->lastmeal, NULL); //toplace after infinite loop before start
 	philo->resttime = ft_atoi(argv[4]);
 	if (argc == 6)
@@ -225,27 +217,12 @@ void	*routine(void *philosoph)
 	philo = (t_philo *)philosoph;
 	while (philo->letsgo == false)
 		usleep(1);
-	//pthread_mutex_init(&secure, NULL);
-	//dprintf(2, "[%s] %zu start: %d\n", __func__ , philo->id, philo->isalive);
 	gettimeofday(&temps, NULL);
-	//philo->birth = temps;
-	//printf("[%ldms]\troutine of philo[%d]\n", TIMESTAMP, (int)philo->id);
 	while (isphilo_alive(philo))
 	{
-		if (philo->lastmeal.tv_usec - temps.tv_usec <= philo->lifetime)
-		{
-			if (eat(philo, philo->starve) && isphilo_alive(philo))
-				dream(*philo, philo->resttime);
-			/*else
-				dprintf(2, "[%s]Something wrong happened\n", __func__);*/
-		}
-		else
-			philo->isalive = false;
-			//printf("[%ldms]\t%d died (routine)\n", (temps.tv_usec - philo->birth.tv_usec), (int)philo->id);
-		//gettimeofday(&temps, NULL);
-		//printf("Is philo[%zu] alive? %s\n", philo->id, philo->isalive ? "True" : "False");
+		if (eat(philo, philo->starve) && isphilo_alive(philo))
+			dream(*philo, philo->resttime);
 	}
-	//dprintf(2, "Fin de la routine de %zu\n", philo.id);
 	return (NULL);
 }
 
@@ -262,16 +239,25 @@ void	letsgo_philos(size_t nb_philos, t_philo **philos)
 		philos[0][i].letsgo = true;
 		philos[0][i].birth = start;
 		philos[0][i].lastmeal = start;
+		usleep(i % 1 == 0);
 		//dprintf(2, "[%s]philos[0][%zu]\n", __func__, i);
 		//dprintf(2, "[%s]&philo[%zu].birth=%ld\n", __func__ ,philos[0][i].id, philos[0][i].birth.tv_usec);
 		i++;
 	}
 }
 
+t_mtx	init_mutexs(void)
+{
+	t_mtx	mtx_initiated;
+
+	pthread_mutex_init(&mtx_initiated.print, NULL);
+	pthread_mutex_init(&mtx_initiated.is_philo_alive, NULL);
+	return (mtx_initiated);
+}
+
 void	chain_philos(size_t nb_philos, t_philo *cavern, int argc, char **argv)
 {
 	size_t			cuffs;
-	//struct timeval	time;
 	bool			*everything_is_ok;
 
 	cuffs = 0;
@@ -295,7 +281,10 @@ void	chain_philos(size_t nb_philos, t_philo *cavern, int argc, char **argv)
 	}
 	cuffs = -1;
 	while (++cuffs < nb_philos)
+	{
 		pthread_create(&cavern[cuffs].philo, NULL, &routine, &cavern[cuffs]);
+		//pthread_detach(cavern[cuffs].philo);
+	}
 	letsgo_philos(nb_philos, &cavern);
 }
 
@@ -311,8 +300,8 @@ void	get_away_corpses(size_t nb_philos, t_philo *cavern)
 			break ;
 		}*/
 		printf("Trying to join philo[%zu]\n", cavern[corpses_cleaned].id);
-		if (pthread_join(cavern[corpses_cleaned++].philo, NULL) == 0)
-			exit(84);
+		pthread_join(cavern[corpses_cleaned++].philo, NULL);
+		//pthread_detach(cavern[corpses_cleaned++].philo);
 		printf("philo[%zu]joined.\n", cavern[corpses_cleaned - 1].id);
 	}
 	printf("Cavern cleaned.\n");

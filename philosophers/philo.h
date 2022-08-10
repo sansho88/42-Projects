@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:17:48 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/04/12 15:06:58 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:31:44 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 
 # define TIMESTAMP (temps.tv_sec * 1000 + temps.tv_usec / 1000) - (philo->birth.tv_sec * 1000 + philo->birth.tv_usec / 1000)
 
-typedef struct s_fork{
-	pthread_mutex_t	isfree;
-}	t_fork;
+typedef struct s_mtx{
+	pthread_mutex_t	print;
+	pthread_mutex_t	is_philo_alive;
+}	t_mtx;
 
 typedef struct s_philo{
 	pthread_t		philo;
@@ -32,7 +33,7 @@ typedef struct s_philo{
 	suseconds_t		lifetime;
 	suseconds_t		resttime;
 	suseconds_t		starve; //Speed for eat
-	int				nb_meals;
+	int				nb_meals; //TODO
 	bool			isalive;
 	struct timeval	birth;
 	struct timeval	lastmeal;
@@ -41,14 +42,17 @@ typedef struct s_philo{
 	size_t			nb_philos;
 	bool			letsgo;
 	struct s_philo	**cavern;
+	t_mtx			mtxlist;
 }	t_philo;
 
-int		ft_str_isdigit(char **str, size_t size);
-int		ft_isdigit(int c);
-int		ft_atoi(const char *str);
-void	dream(t_philo philo, useconds_t time);
-void	think(t_philo philosoph);
-bool	eat(t_philo *philo, useconds_t time);
-bool	isphilo_alive(t_philo *philo);
+int			ft_str_isdigit(char **str, size_t size);
+int			ft_isdigit(int c);
+int			ft_atoi(const char *str);
+void		dream(t_philo philo, useconds_t time);
+void		think(t_philo philosoph);
+bool		eat(t_philo *philo, useconds_t time);
+bool		isphilo_alive(t_philo *philo);
+t_mtx		init_mutexs(void);
+long		ft_timer(t_philo	*philo);
 
 #endif
