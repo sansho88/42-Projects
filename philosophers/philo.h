@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:17:48 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/10 14:31:44 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/12 12:45:35 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_philo{
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*nextfork;
 	size_t			nb_philos;
-	bool			letsgo;
+	bool			*letsgo;
 	struct s_philo	**cavern;
 	t_mtx			mtxlist;
 }	t_philo;
