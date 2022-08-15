@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:17:48 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/12 12:45:35 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/15 19:40:19 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@
 typedef struct s_mtx{
 	pthread_mutex_t	print;
 	pthread_mutex_t	is_philo_alive;
+	pthread_mutex_t	is_go_true;
 }	t_mtx;
+
+typedef struct s_torch{
+	bool			*letsgo;
+	struct s_philo	**cavern;
+} t_torch;
 
 typedef struct s_philo{
 	pthread_t		philo;
@@ -37,11 +43,11 @@ typedef struct s_philo{
 	bool			isalive;
 	struct timeval	birth;
 	struct timeval	lastmeal;
+	pthread_mutex_t check_lastmeal;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*nextfork;
 	size_t			nb_philos;
 	bool			*letsgo;
-	struct s_philo	**cavern;
 	t_mtx			mtxlist;
 }	t_philo;
 
@@ -51,8 +57,9 @@ int			ft_atoi(const char *str);
 void		dream(t_philo philo, useconds_t time);
 void		think(t_philo philosoph);
 bool		eat(t_philo *philo, useconds_t time);
-bool		isphilo_alive(t_philo *philo);
+bool		isphilo_alive(t_philo philo);
 t_mtx		init_mutexs(void);
 long		ft_timer(t_philo	*philo);
+bool		isgotrue(t_philo philo);
 
 #endif
