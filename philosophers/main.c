@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:03:55 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/15 20:41:38 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:34:25 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	print_act(t_philo *philo, const char *act, bool finish)
 {
 	struct timeval	temps;
 
-	if (isgotrue(*philo) == false)
+	if (!look_at_shadows(*philo->torch->letsgo, &philo->torch->check_letsgo))
 	{
-		printf("[%s]id: %zu| oui\n", __func__, philo->id);
+		//printf("[%s]id: %zu| peut pas manger ta race yo, fdpoulpe\n", __func__, philo->id);
 		return ;
 	}
 	pthread_mutex_lock(&philo->mtxlist.print);
@@ -132,14 +132,14 @@ long ft_timer(t_philo	*philo)
 			1000 + philo->birth.tv_usec / 1000);
 }
 
-bool	isphilo_alive(t_philo philo)
-{
-	bool			answer;
 
-	pthread_mutex_lock(&philo.mtxlist.is_philo_alive);
-	answer = philo.isalive;
-	//if (answer == true)
-	pthread_mutex_unlock(&philo.mtxlist.is_philo_alive);
+bool	look_at_shadows(bool value, pthread_mutex_t *mutex)
+{
+	bool	answer;
+
+	pthread_mutex_lock(mutex);
+	answer = value;
+	pthread_mutex_unlock(mutex);
 	return (answer);
 }
 
@@ -167,13 +167,13 @@ void	*check_philo_health(void *void_torch) //fixme: faire en sorte que la mort s
 	/*dprintf(2, "[%s]&philo[%zu].birth=%ld\n", __func__ ,philo->id, philo->birth.tv_usec);
 	dprintf(2, "[%s]&philo[%zu].letsgo=%d\n", __func__ ,philo->id, philo->letsgo);*/
 	//printf( "[%s]LETSGO:%s...%p\n",__func__, *letsgo ? "True" : "False", letsgo);
-	//printf( "NTP\n");
-	while (isgotrue(torch.letsgo) == false) //FIXME
+	printf( "NTP\n");
+	while (look_at_shadows(torch.letsgo, &torch.check_letsgo) == false) //FIXME
 	{
 		dprintf(1, "[%s:%zu]philo->letsgo=%d\n", __func__, philo->id, *philo->letsgo);
-		usleep(100000);
+		usleep(10000);
 	}
-	dprintf(1, "NTPOUET\n");
+	//dprintf(1, "NTPOUET\n");
 	while (isgotrue(philo[0]))
 	{
 		i = 0;
@@ -189,12 +189,13 @@ void	*check_philo_health(void *void_torch) //fixme: faire en sorte que la mort s
 						__func__,philo->id, (temps.tv_sec * 1000 + temps.tv_usec / 1000 ) - (philo->lastmeal.tv_sec * 1000 + philo->lastmeal.tv_usec / 1000), philo->lifetime);*/
 				dprintf(2, "[id: %zu]lastmeal=%d\n", philo->id, philo[i].lastmeal.tv_usec);
 				philo[i].isalive = false;
-				pthread_mutex_lock(&philo[i].mtxlist.is_go_true);
-//				*letsgo = false;
-				pthread_mutex_unlock(&philo[i].mtxlist.is_go_true);
-				printf( "NTP\n");
+				pthread_mutex_lock(&torch.check_letsgo);
+				*torch.letsgo = false;
+				pthread_mutex_unlock(&torch.check_letsgo);
+				//printf( "NTP\n");
 				//exit(-42);
-				break;
+				printf("[%ldms]\t%d died (philo health checker)\n", ft_timer(philo), (int) philo->id);
+				return (NULL);
 			}
 			pthread_mutex_unlock(&philo[i].check_lastmeal);
 			//usleep(10);
@@ -220,43 +221,46 @@ void	*check_philo_health(void *void_torch) //fixme: faire en sorte que la mort s
  * @param argv
  * @return
  */
-size_t	welcome_philos(t_philo *philo, size_t id, char **argv, int argc)
+size_t	welcome_philos(t_philo *philo, size_t id, t_torch torch)
 {
 	//pthread_t	health_check;
 
-	if (!check_args(argc, argv))
+	if (!check_args(torch.argc, torch.argv))
 		return (0);
 	philo->id = id;
-	philo->lifetime = ft_atoi(argv[2]);
-	philo->starve = ft_atoi(argv[3]);
+	philo->lifetime = ft_atoi(torch.argv[2]);
+	philo->starve = ft_atoi(torch.argv[3]);
 	philo->mtxlist = init_mutexs();
 	gettimeofday(&philo->lastmeal, NULL); //toplace after infinite loop before start
-	philo->resttime = ft_atoi(argv[4]);
-	if (argc == 6)
-		philo->nb_meals = ft_atoi(argv[5]);
+	philo->resttime = ft_atoi(torch.argv[4]);
+	if (torch.argc == 6)
+		philo->nb_meals = ft_atoi(torch.argv[5]);
 	if (philo->lifetime <= 0 || philo->starve <= 0 || philo->resttime <= 0)
 		return (0);
 	philo->isalive = true;
 	/*pthread_create(&health_check, NULL, &check_philo_health, &philo->philo);
 	pthread_detach(health_check);*/
-	return ((size_t)ft_atoi(argv[1]));
+	return ((size_t)ft_atoi(torch.argv[1]));
 }
 
 void	*routine(void *philosoph)
 {
 	//struct timeval	temps;
 	t_philo			*philo;
+	t_torch			*torch;
 
 	philo = (t_philo *)philosoph;
+	philo->letsgo = philo->torch->letsgo;
+	torch = philo->torch;
 //	printf("[%s:%zu]philo->letsgo=%d\n", __func__, philo->id, *philo->letsgo);
-	while (isgotrue(*philo) == false)
+while (!look_at_shadows(*torch->letsgo, &torch->check_letsgo))
 		usleep(10);
-	dprintf(1, "[%s:%zu]philo->letsgo=%d\n", __func__, philo->id, *philo->letsgo);
+	//dprintf(1, "[%s:%zu]philo->letsgo=%d\n", __func__, philo->id, *philo->letsgo);
 	//gettimeofday(&temps, NULL);
-	while (isgotrue(*philo))
+	while (look_at_shadows(*torch->letsgo, &torch->check_letsgo))
 	{
-		eat(philo, philo->starve);//if (eat(philo, philo->starve))
-		dream(*philo, philo->resttime);
+		if (eat(philo, philo->starve))//if (eat(philo, philo->starve))
+			dream(*philo, philo->resttime);
 	}
 	return (NULL);
 }
@@ -285,7 +289,7 @@ void letsgo_philos(size_t nb_philos, t_philo **philos)
 	pthread_mutex_unlock(&philos[0]->mtxlist.is_go_true);
 	usleep(10);
 	//make
-	printf( "[%s]LETSGO:%s...%p\n",__func__, *philos[0]->letsgo ? "True" : "False", philos[0]->letsgo);
+	//printf( "[%s]LETSGO:%s...%p\n",__func__, *philos[0]->letsgo ? "True" : "False", philos[0]->letsgo);
 }
 
 t_mtx	init_mutexs(void)
@@ -298,27 +302,38 @@ t_mtx	init_mutexs(void)
 	return (mtx_initiated);
 }
 
-t_torch init_torch(t_philo **cavern, bool *letsgo)
+t_torch init_torch(t_philo **cavern, bool *letsgo, int argc, char **argv)
 {
 	t_torch			torch;
+	size_t			i;
 
 	torch.cavern = cavern;
 	torch.letsgo = letsgo;
+	torch.argc = argc;
+	torch.argv = argv;
+	pthread_mutex_init(&torch.check_letsgo, NULL);
+	i = 0;
+	while (i < cavern[0]->nb_philos)
+	{
+		cavern[i]->torch = &torch;
+		i++;
+	}
 	return (torch);
 }
 
-void	chain_philos(size_t nb_philos, t_philo *cavern, int argc, char **argv)
+void	chain_philos(size_t nb_philos, t_philo *cavern, t_torch torch)
 {
 	size_t			cuffs;
 
 	cuffs = 0;
 	while (cuffs < nb_philos)
 	{
-		if (!welcome_philos(&cavern[cuffs], cuffs + 1, argv, argc))
+		if (!welcome_philos(&cavern[cuffs], cuffs + 1, torch))
 			break ;
 		pthread_mutex_init(&cavern[cuffs].fork, NULL);
 		pthread_mutex_init(&cavern[cuffs].check_lastmeal, NULL);
 		cavern[cuffs].nb_philos = nb_philos;
+		cavern[cuffs].torch = &torch;
 		if (cuffs > 0 && nb_philos > 1)
 			cavern[cuffs - 1].nextfork = &cavern[cuffs].fork;
 		else
@@ -385,9 +400,9 @@ int	main(int argc, char **argv) //FIXME: 5 800 200 200
 	//times[0] = temps.tv_sec * 1000 + temps.tv_usec / 1000;
 	cavern = malloc(sizeof(t_philo) * nb_philos);
 	init_letsgo(cavern, nb_philos, &letsgo);
-	torch = init_torch(&cavern, &letsgo);
+	torch = init_torch(&cavern, &letsgo, argc, argv);
 	pthread_create(&checker, NULL, check_philo_health, &torch);
-	chain_philos(nb_philos, cavern, argc, argv);
+	chain_philos(nb_philos, cavern, torch);
 	//pthread_detach(checker);
 	get_away_corpses(nb_philos, cavern);
 	/*gettimeofday(&temps, NULL);

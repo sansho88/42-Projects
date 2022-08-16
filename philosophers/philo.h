@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:17:48 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/15 19:40:19 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:46:46 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ typedef struct s_mtx{
 
 typedef struct s_torch{
 	bool			*letsgo;
+	pthread_mutex_t	check_letsgo;
 	struct s_philo	**cavern;
+	int				argc;
+	char			**argv;
 } t_torch;
 
 typedef struct s_philo{
@@ -41,6 +44,7 @@ typedef struct s_philo{
 	suseconds_t		starve; //Speed for eat
 	int				nb_meals; //TODO
 	bool			isalive;
+	t_torch			*torch;
 	struct timeval	birth;
 	struct timeval	lastmeal;
 	pthread_mutex_t check_lastmeal;
@@ -61,5 +65,6 @@ bool		isphilo_alive(t_philo philo);
 t_mtx		init_mutexs(void);
 long		ft_timer(t_philo	*philo);
 bool		isgotrue(t_philo philo);
+bool		look_at_shadows(bool value, pthread_mutex_t *mtx);
 
 #endif
