@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../philo2.h"
 
 /**	Tests for a decimal digit character.
  * @param size = amount of "words"

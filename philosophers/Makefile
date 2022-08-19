@@ -13,7 +13,7 @@
 NAME := philo
 CC := gcc
 FLAGS := -Wall -Wextra -Werror
-SANI := -fsanitize=address -g3
+FLAGS += -fsanitize=address -g3
 THREAD := -pthread
 DIR_UTILS := utils/
 
@@ -26,7 +26,7 @@ OBJS := $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o:%.c philo.h Makefile
+%.o:%.c philo2.h Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
