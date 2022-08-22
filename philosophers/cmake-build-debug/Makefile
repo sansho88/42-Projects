@@ -57,10 +57,10 @@ RM = /Users/tgriffit/Documents/myApps/CLion.app/Contents/bin/cmake/mac/bin/cmake
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tgriffit/projects/philosophers
+CMAKE_SOURCE_DIR = /Users/tgriffit/projects/42-Projects/philosophers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tgriffit/projects/philosophers/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/tgriffit/projects/42-Projects/philosophers/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tgriffit/projects/philosophers/cmake-build-debug/CMakeFiles /Users/tgriffit/projects/philosophers/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tgriffit/projects/42-Projects/philosophers/cmake-build-debug/CMakeFiles /Users/tgriffit/projects/42-Projects/philosophers/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tgriffit/projects/philosophers/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tgriffit/projects/42-Projects/philosophers/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named philosophers
+# Target rules for targets named 42_Projects
 
 # Build rule for target.
-philosophers: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 philosophers
-.PHONY : philosophers
+42_Projects: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 42_Projects
+.PHONY : 42_Projects
 
 # fast build rule for target.
-philosophers/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/build
-.PHONY : philosophers/fast
+42_Projects/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/build
+.PHONY : 42_Projects/fast
 
 main.o: main.c.o
 .PHONY : main.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -142,7 +142,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -150,7 +150,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/main.c.s
 .PHONY : main.c.s
 
 utils/ft_atoi.o: utils/ft_atoi.c.o
@@ -158,7 +158,7 @@ utils/ft_atoi.o: utils/ft_atoi.c.o
 
 # target to build an object file
 utils/ft_atoi.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_atoi.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_atoi.c.o
 .PHONY : utils/ft_atoi.c.o
 
 utils/ft_atoi.i: utils/ft_atoi.c.i
@@ -166,7 +166,7 @@ utils/ft_atoi.i: utils/ft_atoi.c.i
 
 # target to preprocess a source file
 utils/ft_atoi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_atoi.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_atoi.c.i
 .PHONY : utils/ft_atoi.c.i
 
 utils/ft_atoi.s: utils/ft_atoi.c.s
@@ -174,7 +174,7 @@ utils/ft_atoi.s: utils/ft_atoi.c.s
 
 # target to generate assembly for a file
 utils/ft_atoi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_atoi.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_atoi.c.s
 .PHONY : utils/ft_atoi.c.s
 
 utils/ft_isdigit.o: utils/ft_isdigit.c.o
@@ -182,7 +182,7 @@ utils/ft_isdigit.o: utils/ft_isdigit.c.o
 
 # target to build an object file
 utils/ft_isdigit.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_isdigit.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_isdigit.c.o
 .PHONY : utils/ft_isdigit.c.o
 
 utils/ft_isdigit.i: utils/ft_isdigit.c.i
@@ -190,7 +190,7 @@ utils/ft_isdigit.i: utils/ft_isdigit.c.i
 
 # target to preprocess a source file
 utils/ft_isdigit.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_isdigit.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_isdigit.c.i
 .PHONY : utils/ft_isdigit.c.i
 
 utils/ft_isdigit.s: utils/ft_isdigit.c.s
@@ -198,7 +198,7 @@ utils/ft_isdigit.s: utils/ft_isdigit.c.s
 
 # target to generate assembly for a file
 utils/ft_isdigit.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_isdigit.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_isdigit.c.s
 .PHONY : utils/ft_isdigit.c.s
 
 utils/ft_str_isdigit.o: utils/ft_str_isdigit.c.o
@@ -206,7 +206,7 @@ utils/ft_str_isdigit.o: utils/ft_str_isdigit.c.o
 
 # target to build an object file
 utils/ft_str_isdigit.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_str_isdigit.c.o
 .PHONY : utils/ft_str_isdigit.c.o
 
 utils/ft_str_isdigit.i: utils/ft_str_isdigit.c.i
@@ -214,7 +214,7 @@ utils/ft_str_isdigit.i: utils/ft_str_isdigit.c.i
 
 # target to preprocess a source file
 utils/ft_str_isdigit.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_str_isdigit.c.i
 .PHONY : utils/ft_str_isdigit.c.i
 
 utils/ft_str_isdigit.s: utils/ft_str_isdigit.c.s
@@ -222,7 +222,7 @@ utils/ft_str_isdigit.s: utils/ft_str_isdigit.c.s
 
 # target to generate assembly for a file
 utils/ft_str_isdigit.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/philosophers.dir/build.make CMakeFiles/philosophers.dir/utils/ft_str_isdigit.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/42_Projects.dir/build.make CMakeFiles/42_Projects.dir/utils/ft_str_isdigit.c.s
 .PHONY : utils/ft_str_isdigit.c.s
 
 # Help Target
@@ -233,7 +233,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... philosophers"
+	@echo "... 42_Projects"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

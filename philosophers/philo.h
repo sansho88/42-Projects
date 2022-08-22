@@ -6,13 +6,14 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:40:08 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/19 12:01:33 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:16:49 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+#include <string.h>
 # include <stdio.h>
 # include <pthread.h>
 # include <sys/time.h>
@@ -25,10 +26,15 @@
 typedef struct s_world{
 	size_t			nb_philos;
 	pthread_mutex_t	check_go;
+	pthread_mutex_t	god_voice;
 	bool			go;
 	struct timeval	start;
 	int				argc;
 	char			**argv;
+	suseconds_t		lifetime;
+	suseconds_t		time4eat;
+	suseconds_t		sleeptime;
+	struct s_philo	*cavern;
 }	t_world;
 
 typedef struct s_philo{
