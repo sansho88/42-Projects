@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:37:22 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/22 18:12:05 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/23 11:35:29 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,47 +155,54 @@ void	*routine(void	*philosoph)
 	philo = philosoph;
 	while (!try_to_use(&philo->world->check_go, &philo->world->go))
 		usleep('*');
-	while (try_to_use(&philo->world->check_go, &philo->world->go))
+	while (true)
 	{
-		print_act("is thinking", *philo, philo->world);
-		eat(philo);
-		dream(philo);
+		if (try_to_use(&philo->world->check_go, &philo->world->go))
+			print_act("is thinking", *philo, philo->world);
+		else
+			return (NULL);
+		if (try_to_use(&philo->world->check_go, &philo->world->go))
+			eat(philo);
+		else
+			return (NULL);
+		if (try_to_use(&philo->world->check_go, &philo->world->go))
+			dream(philo);
+		else
+			return (NULL);
 	}
-	return (NULL);
 }
 
 void *health_checker(void	*void_world)
 {
 	t_world	*world;
 	t_philo	*cavern;
-//	long	lastmealtime;
+	long	lastmealtime;
 	size_t	i;
 
 	world = (t_world *)void_world;
-	dprintf(2, "[%s]&cavern=%p\n",__func__, &world->cavern);
+	dprintf(2, "[%s]&cavern=%p\n",__func__, world->cavern);
 	cavern = world->cavern; //fixme : AddressSanitizer: heap-buffer-overflow
 	i = 0;
 	while (i < world->nb_philos)
 	{
-		dprintf(2, "[%s]philo->id = %d\n",__func__, cavern[i].id);
-		/*lastmealtime = (cavern[i].lastmeal.tv_sec * 1000
+		//dprintf(2, "[%s]philo->id = %d\n",__func__, cavern[i].id);
+		lastmealtime = (cavern[i].lastmeal.tv_sec * 1000
 				+ cavern[i].lastmeal.tv_usec / 1000)
-			- (world->start.tv_sec * 1000 + world->start.tv_usec / 1000);*/
-		//dprintf(2, "[%s]lastmealtime - ft_timer(*world) = %ld\n", __func__, lastmealtime - ft_timer(*world));
-		/*if (lastmealtime - ft_timer(*world) >= cavern[i].lifetime)
+			- (world->start.tv_sec * 1000 + world->start.tv_usec / 1000);
+		//dprintf(2, "[%s]ft_timer(*world) - lastmealtime = %ld\n", __func__, ft_timer(*world) - lastmealtime);
+		if (ft_timer(*world) - lastmealtime >= cavern[i].lifetime)
 		{
-			puts("NESQUICK");
 			pthread_mutex_lock(&world->check_go);
 			print_act("died", cavern[i], world);
 			world->go = false;
 			pthread_mutex_unlock(&world->check_go);
 			return (NULL);
-		}*/
+		}
 		i++;
 		i %= world->nb_philos - 1;
+		usleep('*');
 		//puts("CHOCAPIC");
 	}
-	dprintf(2, "END OF DOCTOR'S DUTY\n");
 	return (NULL);
 }
 
@@ -208,23 +215,18 @@ void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
 	pthread_mutex_lock(&world->check_go);
 	while (i < nb_philos)
 	{
-		printf("%i\n",cavern[i].id);
-
 		if (pthread_create((&cavern[i].philo), NULL, &routine, &cavern[i]) != 0)
-		{
-			printf("[%s:Thread failed to be created]id:%i | i = %zu\n",__func__, cavern[i].id, i);
-			return ; //uncomment when threads would be correctly created
-		}
+			return ;
 		i++;
 	}
 	gettimeofday(&world->start, NULL);
 	world->cavern = cavern;
 	dprintf(2, "[%s]&cavern=%p\n",__func__, &world->cavern);
-	pthread_create(&doctor, NULL, &health_checker, world->cavern); //fixme: not same address
+	pthread_create(&doctor, NULL, &health_checker, world); //fixme: not same address
 	world->go = true;
 	dprintf(2, "go go go %d\n", world->go);
 	pthread_mutex_unlock(&world->check_go);
-	//pthread_join(doctor, NULL);
+	pthread_join(doctor, NULL);
 }
 
 
