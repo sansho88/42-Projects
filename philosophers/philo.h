@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:40:08 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/22 17:16:49 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/23 14:56:39 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@
 
 # define MALLOC_ERR 42
 
+typedef struct s_corpse{
+	struct s_philo	*dead_philo;
+	long			time_of_death;
+}	t_corpse;
+
 typedef struct s_world{
 	size_t			nb_philos;
 	pthread_mutex_t	check_go;
@@ -35,6 +40,7 @@ typedef struct s_world{
 	suseconds_t		time4eat;
 	suseconds_t		sleeptime;
 	struct s_philo	*cavern;
+	t_corpse		*dead_philo;
 }	t_world;
 
 typedef struct s_philo{
@@ -55,4 +61,6 @@ int			ft_isdigit(int c);
 int			ft_atoi(const char *str);
 void		print_act(char *msg, t_philo philo, t_world *world);
 void		myusleep(useconds_t time);
+void		put_in_coffin(t_corpse *corpse, t_philo *philo, t_world *world);
+void		announce_death_to_family(t_corpse corpse, t_world *world);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:37:22 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/23 11:35:29 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:36:56 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,14 @@ bool	place_philos_in_cavern(t_philo *cavern, t_world *world)
 	i = 0;
 	while (i < world->nb_philos)
 	{
-		if (i > 0 && world->nb_philos > 1)
-			cavern[i - 1].nextfork = &cavern[i].fork;
-		else
-			cavern[i].nextfork = &cavern[i].fork;
-		cavern[i].nextfork = &cavern[(i + 1) % world->nb_philos].fork;
+		if (world->nb_philos > 1)
+			cavern[i].nextfork = &cavern[(i + 1) % world->nb_philos].fork;
 		i++;
 	}
 	return (true);
 }
 
-bool	try_to_use(pthread_mutex_t *mutex, bool *value_to_check)
+bool	try_to_use(pthread_mutex_t *mutex, const bool *value_to_check)
 {
 	bool	answer;
 
@@ -124,6 +121,8 @@ bool	try_to_use(pthread_mutex_t *mutex, bool *value_to_check)
 
 void	print_act(char *msg, t_philo philo, t_world *world)
 {
+	if (!try_to_use(&world->check_go, &world->go))
+		return ;
 	pthread_mutex_lock(&world->god_voice);
 	printf("[%ld]\t%i %s\n", ft_timer(*world), philo.id, msg);
 	pthread_mutex_unlock(&world->god_voice);
@@ -133,11 +132,20 @@ void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->fork);
 	print_act("has taken his fork", *philo, philo->world);
+	if (philo->world->nb_philos == 1)
+	{
+		print_act("died", *philo, philo->world);
+		pthread_mutex_lock(&philo->world->check_go);
+		philo->world->go = false;
+		pthread_mutex_unlock(&philo->world->check_go);
+		return ;
+	}
 	pthread_mutex_lock(philo->nextfork);
 	print_act("has taken an other fork", *philo, philo->world);
 	print_act("is eating", *philo, philo->world);
 	gettimeofday(&philo->lastmeal, NULL);
 	myusleep(philo->time4eat);
+//	usleep(philo->time4eat * 1000);
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(philo->nextfork);
 }
@@ -146,6 +154,7 @@ void	dream(t_philo *philo)
 {
 	print_act("is sleeping", *philo, philo->world);
 	myusleep(philo->sleeptime);
+	//usleep(philo->sleeptime * 1000);
 }
 
 void	*routine(void	*philosoph)
@@ -155,21 +164,21 @@ void	*routine(void	*philosoph)
 	philo = philosoph;
 	while (!try_to_use(&philo->world->check_go, &philo->world->go))
 		usleep('*');
-	while (true)
+	while (try_to_use(&philo->world->check_go, &philo->world->go))
 	{
-		if (try_to_use(&philo->world->check_go, &philo->world->go))
+	//	if (try_to_use(&philo->world->check_go, &philo->world->go))
 			print_act("is thinking", *philo, philo->world);
-		else
-			return (NULL);
-		if (try_to_use(&philo->world->check_go, &philo->world->go))
+		//else
+		//	return (NULL);
+	//	if (try_to_use(&philo->world->check_go, &philo->world->go))
 			eat(philo);
-		else
-			return (NULL);
-		if (try_to_use(&philo->world->check_go, &philo->world->go))
+	//	else
+	//		return (NULL);
+	//	if (try_to_use(&philo->world->check_go, &philo->world->go))
 			dream(philo);
-		else
-			return (NULL);
+	//	else
 	}
+	return (NULL);
 }
 
 void *health_checker(void	*void_world)
@@ -180,30 +189,24 @@ void *health_checker(void	*void_world)
 	size_t	i;
 
 	world = (t_world *)void_world;
-	dprintf(2, "[%s]&cavern=%p\n",__func__, world->cavern);
-	cavern = world->cavern; //fixme : AddressSanitizer: heap-buffer-overflow
+	cavern = world->cavern;
 	i = 0;
-	while (i < world->nb_philos)
+	while (true)
 	{
-		//dprintf(2, "[%s]philo->id = %d\n",__func__, cavern[i].id);
 		lastmealtime = (cavern[i].lastmeal.tv_sec * 1000
 				+ cavern[i].lastmeal.tv_usec / 1000)
 			- (world->start.tv_sec * 1000 + world->start.tv_usec / 1000);
-		//dprintf(2, "[%s]ft_timer(*world) - lastmealtime = %ld\n", __func__, ft_timer(*world) - lastmealtime);
 		if (ft_timer(*world) - lastmealtime >= cavern[i].lifetime)
 		{
 			pthread_mutex_lock(&world->check_go);
-			print_act("died", cavern[i], world);
+			put_in_coffin(world->dead_philo, &cavern[i], cavern->world);
 			world->go = false;
 			pthread_mutex_unlock(&world->check_go);
 			return (NULL);
 		}
-		i++;
-		i %= world->nb_philos - 1;
+		i = ((i + 1) % world->nb_philos) - 1;
 		usleep('*');
-		//puts("CHOCAPIC");
 	}
-	return (NULL);
 }
 
 void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
@@ -222,29 +225,57 @@ void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
 	gettimeofday(&world->start, NULL);
 	world->cavern = cavern;
 	dprintf(2, "[%s]&cavern=%p\n",__func__, &world->cavern);
-	pthread_create(&doctor, NULL, &health_checker, world); //fixme: not same address
+	pthread_create(&doctor, NULL, &health_checker, world);
 	world->go = true;
 	dprintf(2, "go go go %d\n", world->go);
 	pthread_mutex_unlock(&world->check_go);
 	pthread_join(doctor, NULL);
 }
 
+void	unchain_philos(t_philo *cavern)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < cavern->world->nb_philos)
+	{
+		pthread_join(cavern[i].philo, NULL);
+		pthread_mutex_destroy(&cavern[i].fork);
+		i++;
+	}
+	announce_death_to_family(*cavern->world->dead_philo, cavern->world);
+	pthread_mutex_destroy(&cavern->world->check_go);
+	pthread_mutex_destroy(&cavern->world->god_voice);
+}
+
+void put_in_coffin(t_corpse *corpse, t_philo *philo, t_world	*world)
+{
+	corpse->dead_philo = philo;
+	corpse->time_of_death = ft_timer(*world);
+	world->dead_philo = corpse;
+}
+
+void announce_death_to_family(t_corpse corpse, t_world *world)
+{
+	pthread_mutex_lock(&world->god_voice);
+	printf("[%ld]\t%i %s\n", corpse.time_of_death, corpse.dead_philo->id, "died");
+	pthread_mutex_unlock(&world->god_voice);
+}
 
 int	main(int argc, char **argv)
 {
-	t_world	world;
-	t_philo	*cavern;
+	t_world		world;
+	t_philo		*cavern;
+	t_corpse	dead_philo;
 
 	if (!check_args(argc, argv))
 		return (-2);
 	init_world(&world, argc, argv);
+	world.dead_philo = &dead_philo;
 	cavern = malloc(sizeof(t_philo) * world.nb_philos);
 	if (!cavern)
 		return (MALLOC_ERR);
 	place_philos_in_cavern(cavern, &world);
 	light_on_cavern(cavern, &world, world.nb_philos);
-	//todo: health_checker
-	while (1) {
-		usleep('-');
-	}
+	unchain_philos(cavern);
 }
