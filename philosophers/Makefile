@@ -6,21 +6,23 @@
 #    By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 10:32:33 by tgriffit          #+#    #+#              #
-#    Updated: 2022/04/14 13:41:31 by tgriffit         ###   ########.fr        #
+#    Updated: 2022/08/24 11:57:28 by tgriffit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := philo
 CC := gcc
 FLAGS := -Wall -Wextra -Werror
-FLAGS += -fsanitize=address -g3
+FLAGS += -fsanitize=thread -g3
 THREAD := -pthread
 DIR_UTILS := utils/
 
 SRCS := main.c \
 		$(DIR_UTILS)ft_atoi.c \
 		 $(DIR_UTILS)ft_isdigit.c \
-		 $(DIR_UTILS)ft_str_isdigit.c
+		 $(DIR_UTILS)ft_str_isdigit.c \
+		 $(DIR_UTILS)ft_strchr.c \
+		 $(DIR_UTILS)ft_strlen.c
 
 OBJS := $(SRCS:.c=.o)
 

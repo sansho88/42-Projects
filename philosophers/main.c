@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:37:22 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/23 18:36:56 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:24:59 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	myusleep(useconds_t time)
 		- (start.tv_sec * 1000 + start.tv_usec / 1000);
 	while (timestamp < time)
 	{
-		usleep(10);
+		usleep(100);
 		gettimeofday(&temps, NULL);
 		timestamp = (temps.tv_sec * 1000 + temps.tv_usec / 1000)
 			- (start.tv_sec * 1000 + start.tv_usec / 1000);
@@ -58,6 +58,14 @@ bool	check_args(int argc, char **argv)
 	return (true);
 }
 
+bool check_arg_value(const char *argv)
+{
+	if (ft_atoi(argv) == 0 && ft_strchr(argv, '-')
+		&& ft_strlen(argv) > 7)
+		return (false);
+	return (true);
+}
+
 void	init_world(t_world *world, int argc, char **argv)
 {
 	pthread_mutex_init(&world->check_go, NULL);
@@ -66,22 +74,24 @@ void	init_world(t_world *world, int argc, char **argv)
 	gettimeofday(&world->start, NULL);
 	world->argv = argv;
 	world->argc = argc;
-	world->nb_philos = ft_atoi(world->argv[1]);
+	if (check_arg_value(argv[1]))
+		world->nb_philos = ft_atoi(world->argv[1]);
 	world->lifetime = ft_atoi(world->argv[2]);
 	world->time4eat = ft_atoi(world->argv[3]);
 	world->sleeptime = ft_atoi(world->argv[4]);
+	if (argc == 6 && check_arg_value(argv[5]))
+		world->nb_meals_max = ft_atoi(world->argv[5]);
 }
 
 bool	give_birth_to_philo(t_philo *philo, t_world *world)
 {
 	philo->lifetime = world->lifetime;
 	philo->time4eat = world->time4eat;
-	philo->sleeptime = world->time4eat;
+	philo->sleeptime = world->sleeptime;
+	philo->nb_meals = 0;
 	gettimeofday(&philo->lastmeal, NULL);
 	philo->world = world;
 	pthread_mutex_init(&philo->fork, NULL);
-	if (world->argc == 6)
-		philo->nb_meals = ft_atoi(world->argv[5]);
 	if (philo->lifetime <= 0 || philo->time4eat <= 0 || philo->sleeptime <= 0)
 		return (false);
 	return (true);
@@ -134,18 +144,18 @@ void	eat(t_philo *philo)
 	print_act("has taken his fork", *philo, philo->world);
 	if (philo->world->nb_philos == 1)
 	{
-		print_act("died", *philo, philo->world);
+		printf("[%d]\t%i %s\n", philo->lifetime, philo->id, "died");
 		pthread_mutex_lock(&philo->world->check_go);
 		philo->world->go = false;
 		pthread_mutex_unlock(&philo->world->check_go);
 		return ;
 	}
 	pthread_mutex_lock(philo->nextfork);
+	gettimeofday(&philo->lastmeal, NULL);
 	print_act("has taken an other fork", *philo, philo->world);
 	print_act("is eating", *philo, philo->world);
-	gettimeofday(&philo->lastmeal, NULL);
 	myusleep(philo->time4eat);
-//	usleep(philo->time4eat * 1000);
+	philo->nb_meals++;
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(philo->nextfork);
 }
@@ -154,7 +164,6 @@ void	dream(t_philo *philo)
 {
 	print_act("is sleeping", *philo, philo->world);
 	myusleep(philo->sleeptime);
-	//usleep(philo->sleeptime * 1000);
 }
 
 void	*routine(void	*philosoph)
@@ -164,19 +173,15 @@ void	*routine(void	*philosoph)
 	philo = philosoph;
 	while (!try_to_use(&philo->world->check_go, &philo->world->go))
 		usleep('*');
+	usleep((philo->id % 2 == 0) * 2000);
 	while (try_to_use(&philo->world->check_go, &philo->world->go))
 	{
-	//	if (try_to_use(&philo->world->check_go, &philo->world->go))
-			print_act("is thinking", *philo, philo->world);
-		//else
-		//	return (NULL);
-	//	if (try_to_use(&philo->world->check_go, &philo->world->go))
-			eat(philo);
-	//	else
-	//		return (NULL);
-	//	if (try_to_use(&philo->world->check_go, &philo->world->go))
-			dream(philo);
-	//	else
+		print_act("is thinking", *philo, philo->world);
+		eat(philo);
+		if (philo->world->nb_meals_max != 0 && philo->nb_meals
+			== philo->world->nb_meals_max)
+			return (NULL);
+		dream(philo);
 	}
 	return (NULL);
 }
@@ -224,10 +229,14 @@ void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
 	}
 	gettimeofday(&world->start, NULL);
 	world->cavern = cavern;
-	dprintf(2, "[%s]&cavern=%p\n",__func__, &world->cavern);
-	pthread_create(&doctor, NULL, &health_checker, world);
+	if (world->nb_philos > 1)
+		pthread_create(&doctor, NULL, &health_checker, world);
+	else
+	{
+		doctor = NULL;
+		world->dead_philo = NULL;
+	}
 	world->go = true;
-	dprintf(2, "go go go %d\n", world->go);
 	pthread_mutex_unlock(&world->check_go);
 	pthread_join(doctor, NULL);
 }
@@ -243,23 +252,30 @@ void	unchain_philos(t_philo *cavern)
 		pthread_mutex_destroy(&cavern[i].fork);
 		i++;
 	}
-	announce_death_to_family(*cavern->world->dead_philo, cavern->world);
+	if (cavern->world->dead_philo != NULL)
+		announce_death_to_family(*cavern->world->dead_philo, cavern->world);
 	pthread_mutex_destroy(&cavern->world->check_go);
 	pthread_mutex_destroy(&cavern->world->god_voice);
 }
 
 void put_in_coffin(t_corpse *corpse, t_philo *philo, t_world	*world)
 {
-	corpse->dead_philo = philo;
-	corpse->time_of_death = ft_timer(*world);
-	world->dead_philo = corpse;
+	if (philo->nb_meals != world->nb_meals_max)
+	{
+		corpse->dead_philo = philo;
+		corpse->time_of_death = ft_timer(*world);
+		world->dead_philo = corpse;
+	}
 }
 
 void announce_death_to_family(t_corpse corpse, t_world *world)
 {
-	pthread_mutex_lock(&world->god_voice);
-	printf("[%ld]\t%i %s\n", corpse.time_of_death, corpse.dead_philo->id, "died");
-	pthread_mutex_unlock(&world->god_voice);
+	if (corpse.dead_philo != NULL)
+	{
+		pthread_mutex_lock(&world->god_voice);
+		printf("[%ld]\t%i %s\n", corpse.time_of_death, corpse.dead_philo->id, "died");
+		pthread_mutex_unlock(&world->god_voice);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -271,6 +287,11 @@ int	main(int argc, char **argv)
 	if (!check_args(argc, argv))
 		return (-2);
 	init_world(&world, argc, argv);
+	if (world.nb_philos < 1 || world.nb_philos > 200)
+	{
+		printf("Wrong amount of philos. Please test between 1 and 200\n");
+		return (8);
+	}
 	world.dead_philo = &dead_philo;
 	cavern = malloc(sizeof(t_philo) * world.nb_philos);
 	if (!cavern)
