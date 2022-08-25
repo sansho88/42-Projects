@@ -6,12 +6,13 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:37:22 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/24 14:24:59 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/08/25 15:57:16 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/*
 long	ft_timer(t_world world)
 {
 	struct timeval	time;
@@ -39,8 +40,9 @@ void	myusleep(useconds_t time)
 			- (start.tv_sec * 1000 + start.tv_usec / 1000);
 	}
 }
+*/
 
-bool	check_args(int argc, char **argv)
+/*bool	check_args(int argc, char **argv)
 {
 	if (argc < 5 || argc > 6)
 	{
@@ -64,9 +66,9 @@ bool check_arg_value(const char *argv)
 		&& ft_strlen(argv) > 7)
 		return (false);
 	return (true);
-}
+}*/
 
-void	init_world(t_world *world, int argc, char **argv)
+/*void	init_world(t_world *world, int argc, char **argv)
 {
 	pthread_mutex_init(&world->check_go, NULL);
 	pthread_mutex_init(&world->god_voice, NULL);
@@ -117,9 +119,9 @@ bool	place_philos_in_cavern(t_philo *cavern, t_world *world)
 		i++;
 	}
 	return (true);
-}
+}*/
 
-bool	try_to_use(pthread_mutex_t *mutex, const bool *value_to_check)
+/*bool	try_to_use(pthread_mutex_t *mutex, const bool *value_to_check)
 {
 	bool	answer;
 
@@ -140,6 +142,7 @@ void	print_act(char *msg, t_philo philo, t_world *world)
 
 void	eat(t_philo *philo)
 {
+	//printf("[%ld]\t%i is thinking\n", ft_timer(*philo->world), philo->id);
 	pthread_mutex_lock(&philo->fork);
 	print_act("has taken his fork", *philo, philo->world);
 	if (philo->world->nb_philos == 1)
@@ -184,9 +187,9 @@ void	*routine(void	*philosoph)
 		dream(philo);
 	}
 	return (NULL);
-}
+}*/
 
-void *health_checker(void	*void_world)
+/*void *health_checker(void	*void_world)
 {
 	t_world	*world;
 	t_philo	*cavern;
@@ -212,9 +215,9 @@ void *health_checker(void	*void_world)
 		i = ((i + 1) % world->nb_philos) - 1;
 		usleep('*');
 	}
-}
+}*/
 
-void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
+/*void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
 {
 	size_t		i;
 	pthread_t	doctor;
@@ -239,8 +242,9 @@ void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
 	world->go = true;
 	pthread_mutex_unlock(&world->check_go);
 	pthread_join(doctor, NULL);
-}
+}*/
 
+/*
 void	unchain_philos(t_philo *cavern)
 {
 	size_t	i;
@@ -260,7 +264,7 @@ void	unchain_philos(t_philo *cavern)
 
 void put_in_coffin(t_corpse *corpse, t_philo *philo, t_world	*world)
 {
-	if (philo->nb_meals != world->nb_meals_max)
+	if (philo->nb_meals != world->nb_meals_max || world->nb_meals_max == 0)
 	{
 		corpse->dead_philo = philo;
 		corpse->time_of_death = ft_timer(*world);
@@ -276,7 +280,7 @@ void announce_death_to_family(t_corpse corpse, t_world *world)
 		printf("[%ld]\t%i %s\n", corpse.time_of_death, corpse.dead_philo->id, "died");
 		pthread_mutex_unlock(&world->god_voice);
 	}
-}
+}*/
 
 int	main(int argc, char **argv)
 {
@@ -299,4 +303,5 @@ int	main(int argc, char **argv)
 	place_philos_in_cavern(cavern, &world);
 	light_on_cavern(cavern, &world, world.nb_philos);
 	unchain_philos(cavern);
+	free(cavern);
 }

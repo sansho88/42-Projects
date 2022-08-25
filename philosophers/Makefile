@@ -6,7 +6,7 @@
 #    By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 10:32:33 by tgriffit          #+#    #+#              #
-#    Updated: 2022/08/24 11:57:28 by tgriffit         ###   ########.fr        #
+#    Updated: 2022/08/25 16:43:49 by tgriffit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,11 @@ THREAD := -pthread
 DIR_UTILS := utils/
 
 SRCS := main.c \
+		amanuensis.c \
+        anihiliation.c \
+        chronos.c \
+        dayAndNight.c \
+        nursery.c \
 		$(DIR_UTILS)ft_atoi.c \
 		 $(DIR_UTILS)ft_isdigit.c \
 		 $(DIR_UTILS)ft_str_isdigit.c \
@@ -37,7 +42,7 @@ $(NAME): $(OBJS)
 		@echo "You can use it like:"
 		@echo "\033[7m./philo [number_of_philosophers] [time_to_die]" \
         "[time_to_eat] [time_to_sleep]" \
-        "(number_of_times_each_philosopher_must_eat)\n"
+        "(number_of_times_each_philosopher_must_eat)\033[0m\n"
 
 clean:
 		@rm $(OBJS)
