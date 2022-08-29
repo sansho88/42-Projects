@@ -13,7 +13,7 @@
 NAME := philo
 CC := gcc
 FLAGS := -Wall -Wextra -Werror
-FLAGS += -fsanitize=thread -g3
+#FLAGS += -fsanitize=thread -g3
 THREAD := -pthread
 DIR_UTILS := utils/
 

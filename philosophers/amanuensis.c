@@ -27,7 +27,7 @@ void	print_act(char *msg, t_philo philo, t_world *world)
 	if (!try_to_use(&world->check_go, &world->go))
 		return ;
 	pthread_mutex_lock(&world->god_voice);
-	printf("[%ld]\t%i %s\n", ft_timer(*world), philo.id, msg);
+	printf("%ld\t%i %s\n", ft_timer(*world), philo.id, msg);
 	pthread_mutex_unlock(&world->god_voice);
 }
 

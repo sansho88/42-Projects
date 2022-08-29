@@ -21,6 +21,16 @@ long	ft_timer(t_world world)
 		- (world.start.tv_sec * 1000 + world.start.tv_usec / 1000));
 }
 
+long	ft_timer_since(struct timeval start)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000 + time.tv_usec / 1000)
+		- (start.tv_sec * 1000 + start.tv_usec / 1000));
+}
+
+
 void	myusleep(useconds_t time)
 {
 	struct timeval	temps;

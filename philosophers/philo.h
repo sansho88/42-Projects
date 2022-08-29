@@ -66,6 +66,7 @@ char			*ft_strchr(const char *s, int c);
 
 // CHRONOS
 long			ft_timer(t_world world);
+long			ft_timer_since(struct timeval start);
 void			myusleep(useconds_t time);
 
 // NURSERY

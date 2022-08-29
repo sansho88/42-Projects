@@ -77,11 +77,9 @@ void	*health_checker(void	*void_world)
 	i = 0;
 	while (true)
 	{
-		lastmealtime = (cavern[i].lastmeal.tv_sec * 1000
-				+ cavern[i].lastmeal.tv_usec / 1000)
-			- ft_timer(*world);
-		dprintf(2, "lastmealtime = %ld\n", lastmealtime);
-		if (ft_timer(*world) - lastmealtime >= cavern[i].lifetime) //fixme: death not checked
+		lastmealtime = ft_timer_since(cavern[i].lastmeal);
+		//dprintf(2, "lastmealtime = %ld\n", lastmealtime);
+		if (lastmealtime >= cavern[i].lifetime)
 		{
 			pthread_mutex_lock(&world->check_go);
 			put_in_coffin(world->dead_philo, &cavern[i], cavern->world);
@@ -90,7 +88,7 @@ void	*health_checker(void	*void_world)
 			return (NULL);
 		}
 		i = ((i + 1) % world->nb_philos);
-		usleep('*');
+		myusleep('*' * 10);
 	}
 }
 
@@ -113,7 +111,7 @@ void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
 		pthread_create(&doctor, NULL, &health_checker, world);
 	else
 	{
-		doctor = NULL;
+		doctor = 0;
 		world->dead_philo = NULL;
 	}
 	world->go = true;
