@@ -21,6 +21,7 @@ void	unchain_philos(t_philo *cavern)
 	{
 		pthread_join(cavern[i].philo, NULL);
 		pthread_mutex_destroy(&cavern[i].fork);
+		pthread_mutex_destroy(&cavern[i].has_eaten);
 		i++;
 	}
 	if (cavern->world->dead_philo != NULL)

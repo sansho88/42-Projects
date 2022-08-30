@@ -52,6 +52,7 @@ typedef struct s_philo{
 	struct timeval	lastmeal;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*nextfork;
+	pthread_mutex_t has_eaten;
 	suseconds_t		lifetime;
 	suseconds_t		time4eat;
 	suseconds_t		sleeptime;

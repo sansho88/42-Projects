@@ -38,6 +38,7 @@ bool	give_birth_to_philo(t_philo *philo, t_world *world)
 	gettimeofday(&philo->lastmeal, NULL);
 	philo->world = world;
 	pthread_mutex_init(&philo->fork, NULL);
+	pthread_mutex_init(&philo->has_eaten, NULL);
 	if (philo->lifetime <= 0 || philo->time4eat <= 0 || philo->sleeptime <= 0)
 		return (false);
 	return (true);
@@ -68,27 +69,27 @@ bool	place_philos_in_cavern(t_philo *cavern, t_world *world)
 void	*health_checker(void	*void_world)
 {
 	t_world	*world;
-	t_philo	*cavern;
 	long	lastmealtime;
 	size_t	i;
 
 	world = (t_world *)void_world;
-	cavern = world->cavern;
 	i = 0;
 	while (true)
 	{
-		lastmealtime = ft_timer_since(cavern[i].lastmeal);
-		//dprintf(2, "lastmealtime = %ld\n", lastmealtime);
-		if (lastmealtime >= cavern[i].lifetime)
+		pthread_mutex_lock(&world->cavern[i].has_eaten);
+		lastmealtime = ft_timer_since(world->cavern[i].lastmeal);
+		pthread_mutex_unlock(&world->cavern[i].has_eaten);
+		if (lastmealtime >= world->cavern[i].lifetime)
 		{
+			dprintf(2, "lastmealtime = %ld\n", lastmealtime);
+			put_in_coffin(world->dead_philo, &world->cavern[i], world);
 			pthread_mutex_lock(&world->check_go);
-			put_in_coffin(world->dead_philo, &cavern[i], cavern->world);
 			world->go = false;
 			pthread_mutex_unlock(&world->check_go);
 			return (NULL);
 		}
 		i = ((i + 1) % world->nb_philos);
-		myusleep('*' * 10);
+		//myusleep('*');
 	}
 }
 

@@ -25,7 +25,9 @@ void	eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(philo->nextfork);
+	pthread_mutex_lock(&philo->has_eaten);
 	gettimeofday(&philo->lastmeal, NULL);
+	pthread_mutex_unlock(&philo->has_eaten);
 	print_act("has taken an other fork", *philo, philo->world);
 	print_act("is eating", *philo, philo->world);
 	myusleep(philo->time4eat);
