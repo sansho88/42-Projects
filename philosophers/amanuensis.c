@@ -6,12 +6,19 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:32:21 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/08/25 16:09:37 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/09/07 15:19:17 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * Read safely a value which can be read by multiple threads at the same time,
+ * by using its specific mutex
+ * @param mutex
+ * @param value_to_check
+ * @return
+ */
 bool	try_to_use(pthread_mutex_t *mutex, const bool *value_to_check)
 {
 	bool	answer;
@@ -22,15 +29,27 @@ bool	try_to_use(pthread_mutex_t *mutex, const bool *value_to_check)
 	return (answer);
 }
 
+/**
+ * Print a message, with a timestamp, without a risk of scrambled messages
+ * @param msg
+ * @param philo
+ * @param world
+ */
 void	print_act(char *msg, t_philo philo, t_world *world)
 {
 	if (!try_to_use(&world->check_go, &world->go))
 		return ;
 	pthread_mutex_lock(&world->god_voice);
-	printf("%ld\t%i %s\n", ft_timer(*world), philo.id, msg);
+	printf("%ld\t%i %s\n", get_timestamp(*world), philo.id, msg);
 	pthread_mutex_unlock(&world->god_voice);
 }
 
+/**
+ * Check if all arguments are okay with the subject
+ * @param argc
+ * @param argv
+ * @return
+ */
 bool	check_args(int argc, char **argv)
 {
 	if (argc < 5 || argc > 6)

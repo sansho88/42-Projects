@@ -6,12 +6,18 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:54:35 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/09/07 14:41:47 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/09/07 15:27:24 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * Init each value of the t_world struct
+ * @param world
+ * @param argc
+ * @param argv
+ */
 void	init_world(t_world *world, int argc, char **argv)
 {
 	pthread_mutex_init(&world->check_go, NULL);
@@ -29,6 +35,12 @@ void	init_world(t_world *world, int argc, char **argv)
 		world->nb_meals_max = ft_atoi(world->argv[5]);
 }
 
+/**
+ * Init each value of the t_philo struct
+ * @param philo
+ * @param world
+ * @return
+ */
 bool	give_birth_to_philo(t_philo *philo, t_world *world)
 {
 	philo->lifetime = world->lifetime;
@@ -44,6 +56,12 @@ bool	give_birth_to_philo(t_philo *philo, t_world *world)
 	return (true);
 }
 
+/**
+ * Set the tab of t_philos
+ * @param cavern
+ * @param world
+ * @return
+ */
 bool	place_philos_in_cavern(t_philo *cavern, t_world *world)
 {
 	size_t	i;
@@ -66,6 +84,13 @@ bool	place_philos_in_cavern(t_philo *cavern, t_world *world)
 	return (true);
 }
 
+/**
+ * Check the time since the last meal of each philo and compares if they shall
+ * to still be alive.\n
+ * When a philo dies, the informations about its death are gathered.
+ * @param void_world
+ * @return
+ */
 void	*health_checker(void	*void_world)
 {
 	t_world	*world;
@@ -92,6 +117,12 @@ void	*health_checker(void	*void_world)
 	}
 }
 
+/**
+ * Launch the routine of each philos, and the health_checker until the end
+ * @param cavern
+ * @param world
+ * @param nb_philos
+ */
 void	light_on_cavern(t_philo *cavern, t_world *world, size_t nb_philos)
 {
 	size_t		i;

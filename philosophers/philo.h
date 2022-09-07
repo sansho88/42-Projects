@@ -52,7 +52,7 @@ typedef struct s_philo{
 	struct timeval	lastmeal;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*nextfork;
-	pthread_mutex_t has_eaten;
+	pthread_mutex_t	has_eaten;
 	suseconds_t		lifetime;
 	suseconds_t		time4eat;
 	suseconds_t		sleeptime;
@@ -66,7 +66,7 @@ unsigned int	ft_strlen(const char *str);
 char			*ft_strchr(const char *s, int c);
 
 // CHRONOS
-long			ft_timer(t_world world);
+long			get_timestamp(t_world world);
 long			ft_timer_since(struct timeval start);
 void			myusleep(useconds_t time);
 

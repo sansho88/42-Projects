@@ -6,12 +6,19 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:29:14 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/09/07 12:15:56 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:37:12 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * The philosopher first takes his forks, and then wait until he can takes
+ * the one of its right neighbour. \n
+ * Once that's done, the philo eats. Its last_meal value is updated from the
+ * start of its meal. Spaghetti, so 2 forks and no knife ofc.
+ * @param philo
+ */
 void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->fork);
@@ -36,12 +43,23 @@ void	eat(t_philo *philo)
 	pthread_mutex_unlock(philo->nextfork);
 }
 
+/**
+ * Because philos can also dream.
+ * @param philo
+ */
 void	dream(t_philo *philo)
 {
 	print_act("is sleeping", *philo, philo->world);
 	myusleep(philo->sleeptime);
 }
 
+/**
+ * The typical day of an atypical philo: to think, to eat and to dream!\n
+ * Odds philos start their day a bit delayed, like this there's less
+ * forks conflict.
+ * @param philosoph*
+ * @return NULL
+ */
 void	*routine(void	*philosoph)
 {
 	t_philo	*philo;

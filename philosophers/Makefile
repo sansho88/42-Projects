@@ -33,7 +33,7 @@ OBJS := $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o:%.c philo2.h Makefile
+%.o:%.c philo.h Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
