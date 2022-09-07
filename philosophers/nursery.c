@@ -6,7 +6,7 @@
 /*   By: tgriffit <tgriffit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:54:35 by tgriffit          #+#    #+#             */
-/*   Updated: 2022/09/07 12:27:05 by tgriffit         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:41:47 by tgriffit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	*health_checker(void	*void_world)
 		if (lastmealtime >= world->cavern[i].lifetime)
 		{
 			pthread_mutex_unlock(&world->cavern[i].has_eaten);
-			dprintf(1, "[%u]lastmealtime = %ld\n",world->cavern[i].id, lastmealtime);
 			put_in_coffin(world->dead_philo, &world->cavern[i], world);
 			pthread_mutex_lock(&world->check_go);
 			world->go = false;
@@ -90,7 +89,6 @@ void	*health_checker(void	*void_world)
 		}
 		pthread_mutex_unlock(&world->cavern[i].has_eaten);
 		i = ((i + 1) % world->nb_philos);
-		myusleep('*' / 2);
 	}
 }
 

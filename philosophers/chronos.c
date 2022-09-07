@@ -30,7 +30,6 @@ long	ft_timer_since(struct timeval start)
 		- (start.tv_sec * 1000 + start.tv_usec / 1000));
 }
 
-
 void	myusleep(useconds_t time)
 {
 	struct timeval	temps;
